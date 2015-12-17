@@ -116,41 +116,34 @@ If the Cloud Foundry environment needs to use an http(s) proxy for external outb
 
 **Specify using JAVA_OPTS for the New Relic Java agent to talk to its controller via the proxy**
 
-<p class='terminal'>
-$ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar 
-<br>
--Dnewrelic.config.proxy_host=proxy.customer.com 
-<br>
--Dnewrelic.config.proxy_port=8080 “
-</p>
+<pre class='terminal'>
+  $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar 
+  -Dnewrelic.config.proxy_host=proxy.customer.com 
+  -Dnewrelic.config.proxy_port=8080 “
+</pre>
 
 **If a Java application also needs to talk through a proxy add the Java proxy settings in addition to the New Relic agent proxy settings**
 
-<p class='terminal'>
-$ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar   
-<br>
--Dnewrelic.config.proxy_host=proxy.customer.com 
-<br>
--Dnewrelic.config.proxy_port=8080  
-<br>
--Dhttp.proxyHost=proxy.customer.com-Dhttp.proxyPort=8080 
-<br>
--Dhttps.proxyHost=proxy.customer.com -Dhttps.proxyPort=8080  “
-</p>
+<pre class='terminal'>
+  $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar   
+  -Dnewrelic.config.proxy_host=proxy.customer.com 
+  -Dnewrelic.config.proxy_port=8080  
+  -Dhttp.proxyHost=proxy.customer.com-Dhttp.proxyPort=8080 
+  -Dhttps.proxyHost=proxy.customer.com -Dhttps.proxyPort=8080  “
+</pre>
 
 **For a non-java app that needs to talk outbound via a proxy**
 
-<p class='terminal'>
-$ cf set-env APPNAME http_proxy http://user@password:myproxy....:8080/
-<br>
-$ cf set-env APPNAME https_proxy https://user@password:myproxy....:8080/
-</p>
+<pre class='terminal'>
+  $ cf set-env APPNAME http_proxy http://user@password:myproxy....:8080/
+  $ cf set-env APPNAME https_proxy https://user@password:myproxy....:8080/
+</pre>
 
 Whenever making changes to Cloud Foundry environment variables, you will need to restage your application(s) to make the changes effective.
 
-<p class='terminal'>
-$ cf restage APPNAME
-</p>
+<pre class='terminal'>
+  $ cf restage APPNAME
+</pre>
 
 These environment variables can either be set individually per app, or via env variable groups to be set for all apps as part of staging, running environments, etc., using the cf CLI.
 
@@ -165,21 +158,15 @@ Use the JAVA\_OPTS environment variable to specify New Relic Agent specific envi
 
 Example:
 
-<p class='terminal'>
-$ cf ssevg '{ "JAVA_OPTS" : " -Dtest.value=barbar 
-<br>
--Dnewrelic.config.proxy_host=proxy.customer.com 
-<br>
--Dnewrelic.config.proxy_port=8080 -Dhttp.proxyHost=proxy.customer.com 
-<br>
--Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy.customer.com 
-<br>
--Dhttps.proxyPort=8080 -Dspring.profiles.active=dev
-<br>
--Dnewrelic.config.log_level=finer
-<br>
--Djavax.net.debug=all ", "test_env_profile" : "Staging" }'
-</p>
+<pre class='terminal'>
+  $ cf ssevg '{ "JAVA_OPTS" : " -Dtest.value=barbar 
+  -Dnewrelic.config.proxy_host=proxy.customer.com 
+  -Dnewrelic.config.proxy_port=8080 -Dhttp.proxyHost=proxy.customer.com 
+  -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy.customer.com 
+  -Dhttps.proxyPort=8080 -Dspring.profiles.active=dev
+  -Dnewrelic.config.log_level=finer
+  -Djavax.net.debug=all ", "test_env_profile" : "Staging" }'
+</pre>
 
 Also refer to the following documentation: [https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file#config-options-precedence](https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file#config-options-precedence)
 
