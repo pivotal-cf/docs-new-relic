@@ -37,7 +37,7 @@ Not applicable.
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/).
 1. Upload the product file to your Ops Manager installation.
-1. Click **Add** next to the uploaded product description in the Ops Manager Available Products view to add this product to your staging area.
+1. Click **Add** next to the uploaded product description in the Ops Manager "Available Products" view to add this product to your staging area.
 1. Click the newly added tile to review any configurable options.
 1. Click **Apply Changes** to install the service.
 
@@ -56,13 +56,13 @@ Not applicable.
 
     <%= image_tag("newrelic/images/add.png") %>
 
-1. Select the New Relic tile
+1. Select the New Relic tile.
 
     <%= image_tag("newrelic/images/select.png") %>
 
 1. Configure the New Relic Service Broker.
-    * Create a new service plan by clicking **Add** on the far right of the 
-    Service Plan screen.
+    * Click **Add** on the far right of the Service Plan screen to create a new 
+    service plan.
 
     <%= image_tag("newrelic/images/configure.png") %>
 
@@ -81,11 +81,11 @@ Not applicable.
 
     <%= image_tag("newrelic/images/marketplace.png") %>
 
-1. View New Relic Service Plans
+1. View New Relic Service Plans.
 
     <%= image_tag("newrelic/images/plans.png") %>
 
-1. Bind the New Relic Service to an Application 
+1. Bind the New Relic Service to an Application.
 
     <%= image_tag("newrelic/images/bind.png") %>
 
@@ -112,14 +112,14 @@ Not applicable.
     Figure 13: New Relic JVMs View<br>
     <%= image_tag("newrelic/images/view13.png") %>
 
-##<a id='http-proxy'></a>Configurations In case of HTTP Proxy ##
+##<a id='http-proxy'></a>Configuration with HTTP Proxy ##
 
 If the Cloud Foundry environment needs to use an http(s) proxy for external outbound communication, the Service Broker itself does not need to know anything about the http proxy, as it just relays the license keys to the consumer apps. The consumer application should specify the http\_proxy or https\_proxy as an environment variable for the agent to communicate externally. In addition, the New Relic Agent should also be configured with its own set of parameters (**-Dnewrelic.config.\***) to communicate with its controller through the proxy.
 
 **Specify using JAVA_OPTS for the New Relic Java agent to talk to its controller via the proxy**
 
 <pre class='terminal'>
-  $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar 
+  $ cf set-env <appName> JAVA_OPTS " -Dtest.value=barbar 
   -Dnewrelic.config.proxy_host=proxy.customer.com 
   -Dnewrelic.config.proxy_port=8080 “
 </pre>
@@ -127,7 +127,7 @@ If the Cloud Foundry environment needs to use an http(s) proxy for external outb
 **If a Java application also needs to talk through a proxy add the Java proxy settings in addition to the New Relic agent proxy settings**
 
 <pre class='terminal'>
-  $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar   
+  $ cf set-env <appName> JAVA_OPTS " -Dtest.value=barbar   
   -Dnewrelic.config.proxy_host=proxy.customer.com 
   -Dnewrelic.config.proxy_port=8080  
   -Dhttp.proxyHost=proxy.customer.com-Dhttp.proxyPort=8080 
@@ -137,26 +137,26 @@ If the Cloud Foundry environment needs to use an http(s) proxy for external outb
 **For a non-java app that needs to talk outbound via a proxy**
 
 <pre class='terminal'>
-  $ cf set-env APPNAME http_proxy http://user@password:myproxy....:8080/
-  $ cf set-env APPNAME https_proxy https://user@password:myproxy....:8080/
+  $ cf set-env <appName> http_proxy http://user@password:myproxy....:8080/
+  $ cf set-env <appName> https_proxy https://user@password:myproxy....:8080/
 </pre>
 
-Whenever making changes to Cloud Foundry environment variables, you will need to restage your application(s) to make the changes effective.
+Whenever making changes to Cloud Foundry environment variables, you must restage your application(s) to make the changes effective.
 
 <pre class='terminal'>
-  $ cf restage APPNAME
+  $ cf restage <appName>
 </pre>
 
 These environment variables can either be set individually per app, or via env variable groups to be set for all apps as part of staging, running environments, etc., using the cf CLI.
 
 **ENVIRONMENT VARIABLE GROUPS**
   
-* running-environment-variable-group, revg      Retrieve the contents of the running environment variable group
-* staging-environment-variable-group, sevg      Retrieve the contents of the staging environment variable group
-* set-staging-environment-variable-group, ssevg Pass parameters as JSON to create a staging environment variable group
-* set-running-environment-variable-group, srevg Pass parameters as JSON to create a running environment variable group 
+* **running-environment-variable-group, revg**: Retrieve the contents of the running environment variable group
+* **staging-environment-variable-group, sevg**: Retrieve the contents of the staging environment variable group
+* **set-staging-environment-variable-group, ssevg**: Pass parameters as JSON to create a staging environment variable group
+* **set-running-environment-variable-group, srevg**: Pass parameters as JSON to create a running environment variable group 
 
-Use the JAVA\_OPTS environment variable to specify New Relic Agent specific environment variable in the Staging environment group so the Java Buildpack can use that and push it in the correct place. Specifying JAVA\_OPTS in the Runtime environment variable group will not yield anything, as the buildpack will not know about it.
+Use the JAVA\_OPTS environment variable to specify New Relic Agent-specific environment variables in the Staging environment group so the Java Buildpack can use that and push it in the correct place. Specifying JAVA\_OPTS in the Runtime environment variable group will not yield anything, as the buildpack will not know about it.
 
 Example:
 
@@ -174,14 +174,14 @@ Also refer to the following documentation: [https://docs.newrelic.com/docs/agent
 
 ##<a id='offline-dependencies'></a>Packaging Dependencies for Offline Buildpacks ##
 
-If you are running PCF in an offline manner, you will want to be sure you have packaged the dependencies (including the New Relic agent sources) in your PCF environment.   
+If you are running PCF in an offline manner, you should package the dependencies, including the New Relic agent sources, in your PCF environment.   
 
 More details on this can be found here:  https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html 
 
 ##<a id='limitations'></a>Limitations ##
 
 * Currently supported Buildpacks bundling New Relic Agent are the Java and PHP Buildpacks. 
-    * Java Buildpack 2.7 upwards and 3.x
+    * Java Buildpack 2.7 and later and 3.x
     * PHP Buildpack 4.0+
 * Similar support would be built for other language buildpacks in future releases. 
 
