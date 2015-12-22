@@ -2,7 +2,7 @@
 title: New Relic APM
 ---
 
-This is documentation for the Pivotal Cloud Foundry&reg; [New Relic APM](https://network.pivotal.io/products/newrelic) tile.
+This is documentation for the Pivotal Cloud Foundry&reg; [New Relic APM](https://network.pivotal.io/products/p-new-relic) tile.
 
 New Relic APM supports real-time instrumentation and monitoring of application performance via its embedded agent that runs with applications. New Relic agent code embedded or bundled with the application instruments the application code and publishes performance monitoring metrics and other details back to New Relic APM Dashboard. 
 
@@ -19,7 +19,7 @@ Customers interested in using New Relic can obtain a [60 day free trial license]
 ##<a id='product-snapshot'></a>Product Snapshot ##
 
 <dl>
-<dt>Current <a href="https://network.pivotal.io/products/newrelic">New Relic APM Tile</a> for Pivotal Cloud Foundry&reg; Details</dt>
+<dt>Current <a href="https://network.pivotal.io/products/p-new-relic">New Relic APM Tile</a> for Pivotal Cloud Foundry&reg; Details</dt>
 <dd><strong>Version</strong>: 2.0</dd>
 <dd><strong>Release Date</strong>: 2015-12-07</dd>
 <dd><strong>Software component version</strong>: New Relic Service Broker 2.0</dd>
@@ -89,45 +89,59 @@ Not applicable.
 
     <%= image_tag("newrelic/images/bind.png") %>
 
+1. In a terminal window, use the `cf restage` command to make the changes effective.
+
+    <pre class='terminal'>
+      $ cf restage APPNAME
+    </pre>
+
 1. Log in into New Relic to view monitoring data.
    
-    Figure 7: New Relic App Monitoring Dashboard<br> 
+    Figure 13.1: New Relic App Monitoring Dashboard<br> 
     <%= image_tag("newrelic/images/view07.png") %>
 
-    Figure 8: New Relic Transactions View<br>
+    Figure 13.2: New Relic Transactions View<br>
     <%= image_tag("newrelic/images/view08.png") %>
 
-    Figure 9: Transaction Traces View<br>
+    Figure 13.3: Transaction Traces View<br>
     <%= image_tag("newrelic/images/view09.png") %>
 
-    Figure 10: New Relic Database View<br>
+    Figure 13.4: New Relic Database View<br>
     <%= image_tag("newrelic/images/view10.png") %>
 
-    Figure 11: New Relic Web Transactions View<br>
+    Figure 13.5: New Relic Web Transactions View<br>
     <%= image_tag("newrelic/images/view11.png") %>
 
-    Figure 12: New Relic Top Web Transactions View<br>
+    Figure 13.6: New Relic Top Web Transactions View<br>
     <%= image_tag("newrelic/images/view12.png") %>
 
-    Figure 13: New Relic JVMs View<br>
+    Figure 13.7: New Relic JVMs View<br>
     <%= image_tag("newrelic/images/view13.png") %>
 
 ##<a id='http-proxy'></a>Configuration with HTTP Proxy ##
 
-If the Cloud Foundry environment needs to use an http(s) proxy for external outbound communication, the Service Broker itself does not need to know anything about the http proxy, as it just relays the license keys to the consumer apps. The consumer application should specify the http\_proxy or https\_proxy as an environment variable for the agent to communicate externally. In addition, the New Relic Agent should also be configured with its own set of parameters (**-Dnewrelic.config.\***) to communicate with its controller through the proxy.
+If the Cloud Foundry environment needs to use an http(s) proxy for external outbound communication, the Service Broker itself does not need to know anything about the http proxy, as it just relays the license keys to the consumer apps. The consumer application should specify the http\_proxy or https\_proxy as an environment variable for the agent to communicate externally with non-java applications, and use JAVA_OPTS for Java applications. In addition, the New Relic Agent should also be configured with its own set of parameters (**-Dnewrelic.config.\***) to communicate with its controller through the proxy for Java language applications..
+
+**Specify using http_proxy for the New Relic non-Java application agent to talk to its controller via the proxy**
+
+<pre class='terminal'>
+  $ cf set-env APPNAME http_proxy ‘http://user:password@proxy-server.customer.com:8080'
+
+  $ cf set-env APPNAME https_proxy ‘http://user:password@proxy-server.customer.com:8080'
+</pre>
 
 **Specify using JAVA_OPTS for the New Relic Java agent to talk to its controller via the proxy**
 
 <pre class='terminal'>
-  $ cf set-env <appName> JAVA_OPTS " -Dtest.value=barbar 
+  $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar 
   -Dnewrelic.config.proxy_host=proxy.customer.com 
   -Dnewrelic.config.proxy_port=8080 “
 </pre>
 
-**If a Java application also needs to talk through a proxy add the Java proxy settings in addition to the New Relic agent proxy settings**
+**If a Java application also needs to talk through a proxy, add the Java proxy settings in addition to the New Relic agent proxy settings**
 
 <pre class='terminal'>
-  $ cf set-env <appName> JAVA_OPTS " -Dtest.value=barbar   
+  $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar   
   -Dnewrelic.config.proxy_host=proxy.customer.com 
   -Dnewrelic.config.proxy_port=8080  
   -Dhttp.proxyHost=proxy.customer.com-Dhttp.proxyPort=8080 
@@ -137,14 +151,14 @@ If the Cloud Foundry environment needs to use an http(s) proxy for external outb
 **For a non-java app that needs to talk outbound via a proxy**
 
 <pre class='terminal'>
-  $ cf set-env <appName> http_proxy http://user@password:myproxy....:8080/
-  $ cf set-env <appName> https_proxy https://user@password:myproxy....:8080/
+  $ cf set-env APPNAME http_proxy http://user@password:myproxy....:8080/
+  $ cf set-env APPNAME https_proxy https://user@password:myproxy....:8080/
 </pre>
 
 Whenever making changes to Cloud Foundry environment variables, you must restage your application(s) to make the changes effective.
 
 <pre class='terminal'>
-  $ cf restage <appName>
+  $ cf restage APPNAME
 </pre>
 
 These environment variables can either be set individually per app, or via env variable groups to be set for all apps as part of staging, running environments, etc., using the cf CLI.
@@ -174,7 +188,7 @@ Also refer to the following documentation: [https://docs.newrelic.com/docs/agent
 
 ##<a id='offline-dependencies'></a>Packaging Dependencies for Offline Buildpacks ##
 
-If you are running PCF in an offline manner, you should package the dependencies, including the New Relic agent sources, in your PCF environment.   
+If you are running PCF in an offline manner, you should recreate and package the dependencies, including the New Relic agent binaries, via offline buildpacks in your PCF environment.
 
 More details on this can be found here:  https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html 
 
