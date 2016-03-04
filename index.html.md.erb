@@ -1,16 +1,17 @@
 ---
 title: New Relic APM
+owner: Partners
 ---
 
 This is documentation for the Pivotal Cloud Foundry&reg; [New Relic APM](https://network.pivotal.io/products/p-new-relic) tile.
 
-New Relic APM supports real-time instrumentation and monitoring of application performance via its embedded agent that runs with applications. New Relic agent code embedded or bundled with the application instruments the application code and publishes performance monitoring metrics and other details back to New Relic APM Dashboard. 
+New Relic APM supports real-time instrumentation and monitoring of application performance via its embedded agent that runs with applications. New Relic agent code embedded or bundled with the application instruments the application code and publishes performance monitoring metrics and other details back to New Relic APM Dashboard.
 
 ##<a id='service-broker'></a>New Relic Service Broker ##
 
-A Service Broker allows Cloud Foundry applications to bind to services and consume the services easily from the Pivotal Apps Manager Console or from the command line. The New Relic Service Broker enables you to use one or more New Relic accounts and is deployed as a Java Application on Cloud Foundry. The Broker exposes the New Relic service on the Cloud Foundry Marketplace and allows users to directly create a service instance and bind it to their applications either from the Pivotal Apps Manager Console or from the command line. 
+A Service Broker allows Cloud Foundry applications to bind to services and consume the services easily from the Pivotal Apps Manager Console or from the command line. The New Relic Service Broker enables you to use one or more New Relic accounts and is deployed as a Java Application on Cloud Foundry. The Broker exposes the New Relic service on the Cloud Foundry Marketplace and allows users to directly create a service instance and bind it to their applications either from the Pivotal Apps Manager Console or from the command line.
 
-The Pivotal Cloud Foundry&reg; (PCF) Tile for New Relic installs the New Relic Service Broker as an application, registers it as a Service Broker on Cloud Foundry, and exposes its service plans on the Marketplace. This makes the installation and subsequent use of New Relic on your Cloud Foundry applications simple and easy. 
+The Pivotal Cloud Foundry&reg; (PCF) Tile for New Relic installs the New Relic Service Broker as an application, registers it as a Service Broker on Cloud Foundry, and exposes its service plans on the Marketplace. This makes the installation and subsequent use of New Relic on your Cloud Foundry applications simple and easy.
 
 ##<a id='trial'></a>Trial License ##
 
@@ -43,7 +44,7 @@ Not applicable.
 
 ##<a id='configuring'></a>Configuring the New Relic Tile ##
 
-1. Log in into Pivotal Ops Manager. 
+1. Log in into Pivotal Ops Manager.
 1. Click **Import a Product** and import the New Relic Tile.
 
     <%= image_tag("newrelic/images/import-product.png") %>
@@ -57,14 +58,14 @@ Not applicable.
     <%= image_tag("newrelic/images/select.png") %>
 
 1. Configure the New Relic Service Broker.
-    * Click **Add** on the far right of the Service Plan screen to create a new 
+    * Click **Add** on the far right of the Service Plan screen to create a new
     service plan.
 
     <%= image_tag("newrelic/images/configure.png") %>
 
-1. Create a service plan with your New Relic license key.     
-    * Log in to your New Relic account and navigate to the **Account Settings** 
-    page from the drop-down menu in the upper right corner of the page. Save 
+1. Create a service plan with your New Relic license key.
+    * Log in to your New Relic account and navigate to the **Account Settings**
+    page from the drop-down menu in the upper right corner of the page. Save
     the plan(s).
 
     <%= image_tag("newrelic/images/account-info.png") %>
@@ -92,8 +93,8 @@ Not applicable.
     </pre>
 
 1. Log in into New Relic to view monitoring data.
-   
-    Figure 13.1: New Relic App Monitoring Dashboard<br> 
+
+    Figure 13.1: New Relic App Monitoring Dashboard<br>
     <%= image_tag("newrelic/images/view07.png") %>
 
     Figure 13.2: New Relic Transactions View<br>
@@ -129,18 +130,18 @@ If the Cloud Foundry environment needs to use an http(s) proxy for external outb
 **Specify using JAVA_OPTS for the New Relic Java agent to talk to its controller via the proxy**
 
 <pre class='terminal'>
-  $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar 
-  -Dnewrelic.config.proxy_host=proxy.customer.com 
+  $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar
+  -Dnewrelic.config.proxy_host=proxy.customer.com
   -Dnewrelic.config.proxy_port=8080 “
 </pre>
 
 **If a Java application also needs to talk through a proxy, add the Java proxy settings in addition to the New Relic agent proxy settings**
 
 <pre class='terminal'>
-  $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar   
-  -Dnewrelic.config.proxy_host=proxy.customer.com 
-  -Dnewrelic.config.proxy_port=8080  
-  -Dhttp.proxyHost=proxy.customer.com-Dhttp.proxyPort=8080 
+  $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar
+  -Dnewrelic.config.proxy_host=proxy.customer.com
+  -Dnewrelic.config.proxy_port=8080
+  -Dhttp.proxyHost=proxy.customer.com-Dhttp.proxyPort=8080
   -Dhttps.proxyHost=proxy.customer.com -Dhttps.proxyPort=8080  “
 </pre>
 
@@ -160,21 +161,21 @@ Whenever making changes to Cloud Foundry environment variables, you must restage
 These environment variables can either be set individually per app, or via env variable groups to be set for all apps as part of staging, running environments, etc., using the cf CLI.
 
 **ENVIRONMENT VARIABLE GROUPS**
-  
+
 * **running-environment-variable-group, revg**: Retrieve the contents of the running environment variable group
 * **staging-environment-variable-group, sevg**: Retrieve the contents of the staging environment variable group
 * **set-staging-environment-variable-group, ssevg**: Pass parameters as JSON to create a staging environment variable group
-* **set-running-environment-variable-group, srevg**: Pass parameters as JSON to create a running environment variable group 
+* **set-running-environment-variable-group, srevg**: Pass parameters as JSON to create a running environment variable group
 
 Use the JAVA\_OPTS environment variable to specify New Relic Agent-specific environment variables in the Staging environment group so the Java Buildpack can use that and push it in the correct place. Specifying JAVA\_OPTS in the Runtime environment variable group will not yield anything, as the buildpack will not know about it.
 
 Example:
 
 <pre class='terminal'>
-  $ cf ssevg '{ "JAVA_OPTS" : " -Dtest.value=barbar 
-  -Dnewrelic.config.proxy_host=proxy.customer.com 
-  -Dnewrelic.config.proxy_port=8080 -Dhttp.proxyHost=proxy.customer.com 
-  -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy.customer.com 
+  $ cf ssevg '{ "JAVA_OPTS" : " -Dtest.value=barbar
+  -Dnewrelic.config.proxy_host=proxy.customer.com
+  -Dnewrelic.config.proxy_port=8080 -Dhttp.proxyHost=proxy.customer.com
+  -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy.customer.com
   -Dhttps.proxyPort=8080 -Dspring.profiles.active=dev
   -Dnewrelic.config.log_level=finer
   -Djavax.net.debug=all ", "test_env_profile" : "Staging" }'
@@ -186,14 +187,14 @@ Also refer to the following documentation: [https://docs.newrelic.com/docs/agent
 
 If you are running PCF in an offline manner, you should recreate and package the dependencies, including the New Relic agent binaries, via offline buildpacks in your PCF environment.
 
-More details on this can be found here:  https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html 
+More details on this can be found here:  https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html
 
 ##<a id='limitations'></a>Limitations ##
 
-* Currently supported Buildpacks bundling New Relic Agent are the Java and PHP Buildpacks. 
+* Currently supported Buildpacks bundling New Relic Agent are the Java and PHP Buildpacks.
     * Java Buildpack 2.7 and later and 3.x
     * PHP Buildpack 4.0+
-* Similar support would be built for other language buildpacks in future releases. 
+* Similar support would be built for other language buildpacks in future releases.
 
 ##<a id='feedback'></a>Feedback ##
 
