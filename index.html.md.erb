@@ -122,16 +122,16 @@ If the Cloud Foundry environment needs to use an http(s) proxy for external outb
 **Specify using http_proxy for the New Relic non-Java application agent to talk to its controller via the proxy**
 
 <pre class='terminal'>
-  $ cf set-env APPNAME http_proxy ‘http://user:password@proxy-server.customer.com:8080'
+  $ cf set-env APPNAME http_proxy ‘http://user:password@proxy-server.customer.example.com:8080'
 
-  $ cf set-env APPNAME https_proxy ‘http://user:password@proxy-server.customer.com:8080'
+  $ cf set-env APPNAME https_proxy ‘http://user:password@proxy-server.customer.example.com:8080'
 </pre>
 
 **Specify using JAVA_OPTS for the New Relic Java agent to talk to its controller via the proxy**
 
 <pre class='terminal'>
   $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar
-  -Dnewrelic.config.proxy_host=proxy.customer.com
+  -Dnewrelic.config.proxy_host=proxy.customer.example.com
   -Dnewrelic.config.proxy_port=8080 “
 </pre>
 
@@ -139,10 +139,10 @@ If the Cloud Foundry environment needs to use an http(s) proxy for external outb
 
 <pre class='terminal'>
   $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar
-  -Dnewrelic.config.proxy_host=proxy.customer.com
+  -Dnewrelic.config.proxy_host=proxy.customer.example.com
   -Dnewrelic.config.proxy_port=8080
-  -Dhttp.proxyHost=proxy.customer.com-Dhttp.proxyPort=8080
-  -Dhttps.proxyHost=proxy.customer.com -Dhttps.proxyPort=8080  “
+  -Dhttp.proxyHost=proxy.customer.example.com-Dhttp.proxyPort=8080
+  -Dhttps.proxyHost=proxy.customer.example.com -Dhttps.proxyPort=8080  “
 </pre>
 
 **For a non-java app that needs to talk outbound via a proxy**
@@ -173,9 +173,9 @@ Example:
 
 <pre class='terminal'>
   $ cf ssevg '{ "JAVA_OPTS" : " -Dtest.value=barbar
-  -Dnewrelic.config.proxy_host=proxy.customer.com
-  -Dnewrelic.config.proxy_port=8080 -Dhttp.proxyHost=proxy.customer.com
-  -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy.customer.com
+  -Dnewrelic.config.proxy_host=proxy.customer.example.com
+  -Dnewrelic.config.proxy_port=8080 -Dhttp.proxyHost=proxy.customer.example.com
+  -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy.customer.example.com
   -Dhttps.proxyPort=8080 -Dspring.profiles.active=dev
   -Dnewrelic.config.log_level=finer
   -Djavax.net.debug=all ", "test_env_profile" : "Staging" }'
