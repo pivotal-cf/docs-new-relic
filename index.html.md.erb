@@ -1,43 +1,75 @@
 ---
-title: New Relic APM
+title: New Relic Service Broker for PCF
 owner: Partners
 ---
 
-This is documentation for the Pivotal Cloud Foundry [New Relic APM](https://network.pivotal.io/products/p-new-relic) tile.
+This is documentation for the [New Relic Service Broker for Pivotal Cloud Foundry (PCF)](https://network.pivotal.io/products/p-new-relic) tile.
 
-New Relic APM supports real-time instrumentation and monitoring of application performance via its embedded agent that runs with applications. New Relic agent code embedded or bundled with the application instruments the application code and publishes performance monitoring metrics and other details back to New Relic APM Dashboard.
+New Relic APM supports real-time instrumentation and monitoring of application performance 
+via its embedded agent that runs with apps. 
+New Relic agent code embedded or bundled with the app instruments the app code and 
+publishes performance monitoring metrics and other details back to New Relic APM Dashboard.
 
 ##<a id='service-broker'></a>New Relic Service Broker ##
 
-A Service Broker allows Cloud Foundry applications to bind to services and consume the services easily from the Pivotal Apps Manager Console or from the command line. The New Relic Service Broker enables you to use one or more New Relic accounts and is deployed as a Java Application on Cloud Foundry. The Broker exposes the New Relic service on the Cloud Foundry Marketplace and allows users to directly create a service instance and bind it to their applications either from the Pivotal Apps Manager Console or from the command line.
+A service broker allows Cloud Foundry apps to bind to services and consume the services easily 
+from Pivotal Apps Manager or from the command line. 
+The New Relic Service Broker for PCF enables you to use one or more New Relic accounts and 
+is deployed as a Java app on PCF. 
+The broker exposes the New Relic service on the Marketplace and allows users to directly 
+create a service instance and bind it to their apps either from Apps Manager or from the command line.
 
-The Pivotal Cloud Foundry (PCF) Tile for New Relic installs the New Relic Service Broker as an application, registers it as a Service Broker on Cloud Foundry, and exposes its service plans on the Marketplace. This makes the installation and subsequent use of New Relic on your Cloud Foundry applications simple and easy.
+The New Relic Service Broker for PCF tile installs the New Relic Service Broker as an app, 
+registers it as a service broker on PCF, and exposes its service plans on the Marketplace. 
+This makes the installation and subsequent use of New Relic on your PCF apps more straightforward.
 
 ##<a id='trial'></a>Trial License ##
 
-Customers interested in using New Relic can obtain a [60 day free trial license](http://newrelic.com/signup?funnel=pivotal-cloud-foundry&partner=Pivotal+Cloud+Foundry&product_id=Standard&promo_code=PVCF60PRO).
+You can obtain a [60-day free trial license](http://newrelic.com/signup?funnel=pivotal-cloud-foundry&partner=Pivotal+Cloud+Foundry&product_id=Standard&promo_code=PVCF60PRO).
 
 ##<a id='product-snapshot'></a>Product Snapshot ##
 
-<dl>
-<dt>Current <a href="https://network.pivotal.io/products/p-new-relic">New Relic APM Tile</a> for Pivotal Cloud Foundry Details</dt>
-<dd><strong>Version</strong>: 1.10.0</dd>
-<dd><strong>Release Date</strong>: 2017-03-30</dd>
-<dd><strong>Software component version</strong>: New Relic Service Broker v1.10.0</dd>
-<dd><strong>Compatible Ops Manager Version(s)</strong>: v1.8.x, v1.9.x, v1.10.x</dd>
-<dd><strong>Compatible Elastic Runtime Version(s)</strong>: v1.8.x, v1.9.x, v1.10.x</dd>
-<dd><strong>vSphere support?</strong> Yes</dd>
-<dd><strong>AWS support?</strong> Yes</dd>
-<dd><strong>Google Cloud Platform support?</strong> Yes</dd>
-</dl>
+The following table provides version and version-support information about New Relic Service Broker for PCF.
+
+<table class="nice">
+    <th>Element</th>
+    <th>Details</th>
+    <tr>
+        <td>Version</td>
+        <td>v1.10.0</td>
+    </tr>
+    <tr>
+        <td>Release date</td>
+        <td>March 30, 2017</td>
+    </tr>
+    <tr>
+        <td>Software component version</td>
+        <td>New Relic Service Broker v1.10.0</td>
+    </tr>
+    <tr>
+        <td>Compatible Ops Manager version(s)</td>
+        <td>v1.8.x, v1.9.x, v1.10.x</td>
+    </tr>
+    <tr>
+        <td>Compatible Elastic Runtime version(s)</td>
+        <td>v1.8.x, v1.9.x, v1.10.x</td>
+    </tr>
+    <tr>
+        <td>IaaS support</td>
+        <td>AWS, GCP, and vSphere</td>
+    </tr>
+</table>
 
 ##<a id='upgrading'></a>Upgrading to the Latest Version ##
 
-<dl>
-<dd><strong>Upgrade path</strong>Upgrade from v1.6 or v1.7 is supported. Any older tile configuration in ops mgr v1.8, v1.9 or 1.10 will show with older New Relic tile version. Any v1.6, v1.7 will have configuration that can be imported and carried forward when importing this tile.</dd>
-</dl>
+Upgrade from v1.6 or v1.7 is supported. 
+Any older tile configuration in PCF Operations Manager (Ops Manager) v1.8, v1.9 or v1.10 will show with older
+New Relic Service Broker for PCF tile version. 
+Any v1.6, v1.7 will have configuration that can be imported and carried forward when importing this tile.</dd>
 
-##<a id='installing'></a> Install via Pivotal Ops Manager ##
+##<a id='installing'></a> Install via Ops Manager ##
+
+Follow these instructions to download the New Relic Service Broker for PCF tile and install it on PCF Operations Manager (Ops Manager).
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/).
 1. **Import** the product file to your Ops Manager installation.
@@ -45,14 +77,14 @@ Customers interested in using New Relic can obtain a [60 day free trial license]
 1. Click the newly added tile to review any configurable options.
 1. Click **Apply Changes** to install the service.
 
-##<a id='configuring'></a>Configuring the New Relic Tile ##
+##<a id='configuring'></a>Configuring the Tile ##
 
-1. Log in into Pivotal Ops Manager.
-1. Click **Import a Product** and import the New Relic Tile.
+1. Log in to Ops Manager.
+1. Click **Import a Product** and import the New Relic Service Broker for PCF tile.
 
     <%= image_tag("import-product.png") %>
 
-1. Click **Add** on the New Relic Tile.
+1. Click **Add** on the New Relic Service Broker for PCF tile.
 
     <%= image_tag("add.png") %>
 
@@ -77,7 +109,7 @@ Customers interested in using New Relic can obtain a [60 day free trial license]
 
 1. Apply your changes.
 
-1. On completion of New Relic Tile install, check the Services Marketplace in Apps Manager.
+1. On completion of the installation, check the Services Marketplace in Apps Manager.
 
     <%= image_tag("marketplace.png") %>
 
@@ -85,7 +117,7 @@ Customers interested in using New Relic can obtain a [60 day free trial license]
 
     <%= image_tag("plans.png") %>
 
-1. Bind the New Relic Service to an Application.
+1. Bind the New Relic Service to an app.
 
     <%= image_tag("bind.png") %>
 
@@ -95,7 +127,7 @@ Customers interested in using New Relic can obtain a [60 day free trial license]
       $ cf restage APPNAME
     </pre>
 
-1. Log in into New Relic to view monitoring data.
+1. Log in to New Relic to view monitoring data.
 
     Figure 13.1: New Relic App Monitoring Dashboard<br>
     <%= image_tag("view07.png") %>
@@ -120,9 +152,16 @@ Customers interested in using New Relic can obtain a [60 day free trial license]
 
 ##<a id='http-proxy'></a>Configuration with HTTP Proxy ##
 
-If the Cloud Foundry environment needs to use an http(s) proxy for external outbound communication, the Service Broker itself does not need to know anything about the http proxy, as it just relays the license keys to the consumer apps. The consumer application should specify the http\_proxy or https\_proxy as an environment variable for the agent to communicate externally with non-java applications, and use JAVA_OPTS for Java applications. In addition, the New Relic Agent should also be configured with its own set of parameters (**-Dnewrelic.config.\***) to communicate with its controller through the proxy for Java language applications..
+If the PCF environment needs to use an HTTP or HTTPS proxy for external outbound communication, 
+the service broker itself does not need to know anything about the HTTP proxy, because it just relays 
+the license keys to the consumer apps. 
+The consumer app should specify the http\_proxy or https\_proxy as an environment variable 
+for the agent to communicate externally with non-Java apps, and use JAVA_OPTS for Java apps. 
+In addition, the New Relic Agent should also be configured with its own set of 
+parameters (**-Dnewrelic.config.\***) to communicate with its controller through the proxy for Java 
+language apps.
 
-**Specify using http_proxy for the New Relic non-Java application agent to talk to its controller via the proxy**
+**Specify using http_proxy for the New Relic non-Java app agent to talk to its controller via the proxy**
 
 <pre class='terminal'>
   $ cf set-env APPNAME http_proxy ‘http://user:password@proxy-server.customer.example.com:8080'
@@ -138,7 +177,7 @@ If the Cloud Foundry environment needs to use an http(s) proxy for external outb
   -Dnewrelic.config.proxy_port=8080 “
 </pre>
 
-**If a Java application also needs to talk through a proxy, add the Java proxy settings in addition to the New Relic agent proxy settings**
+**If a Java app also needs to talk through a proxy, add the Java proxy settings in addition to the New Relic agent proxy settings**
 
 <pre class='terminal'>
   $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar
@@ -148,29 +187,32 @@ If the Cloud Foundry environment needs to use an http(s) proxy for external outb
   -Dhttps.proxyHost=proxy.customer.example.com -Dhttps.proxyPort=8080  “
 </pre>
 
-**For a non-java app that needs to talk outbound via a proxy**
+**For a non-Java app that needs to talk outbound via a proxy**
 
 <pre class='terminal'>
   $ cf set-env APPNAME http_proxy http://user@password:myproxy....:8080/
   $ cf set-env APPNAME https_proxy https://user@password:myproxy....:8080/
 </pre>
 
-Whenever making changes to Cloud Foundry environment variables, you must restage your application(s) to make the changes effective.
+Whenever making changes to Cloud Foundry environment variables, you must restage your app(s) to make the changes effective.
 
 <pre class='terminal'>
   $ cf restage APPNAME
 </pre>
 
-These environment variables can either be set individually per app, or via env variable groups to be set for all apps as part of staging, running environments, etc., using the cf CLI.
+These environment variables can either be set individually per app, or with env variable groups to be set 
+for all apps as part of staging, running environments, etc., using the Cloud Foundry Command Line Interface (cf CLI) tool. 
 
-**ENVIRONMENT VARIABLE GROUPS**
+**Environment Variable Groups**
 
 * **running-environment-variable-group, revg**: Retrieve the contents of the running environment variable group
 * **staging-environment-variable-group, sevg**: Retrieve the contents of the staging environment variable group
 * **set-staging-environment-variable-group, ssevg**: Pass parameters as JSON to create a staging environment variable group
 * **set-running-environment-variable-group, srevg**: Pass parameters as JSON to create a running environment variable group
 
-Use the JAVA\_OPTS environment variable to specify New Relic Agent-specific environment variables in the Staging environment group so the Java Buildpack can use that and push it in the correct place. Specifying JAVA\_OPTS in the Runtime environment variable group will not yield anything, as the buildpack will not know about it.
+Use the JAVA\_OPTS environment variable to specify New Relic Agent-specific environment variables in the 
+Staging environment group so the Java buildpack can use that and push it in the correct place. 
+Specifying JAVA\_OPTS in the Runtime environment variable group will not yield anything, as the buildpack will not know about it.
 
 Example:
 
@@ -184,17 +226,18 @@ Example:
   -Djavax.net.debug=all ", "test_env_profile" : "Staging" }'
 </pre>
 
-Also refer to the following documentation: [https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file#config-options-precedence](https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file#config-options-precedence)
+For more information, see the following documentation:
+[https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file#config-options-precedence](https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file#config-options-precedence).
 
 ##<a id='offline-dependencies'></a>Packaging Dependencies for Offline Buildpacks ##
 
 If you are running PCF in an offline manner, you should recreate and package the dependencies, including the New Relic agent binaries, via offline buildpacks in your PCF environment.
 
-More details on this can be found here:  https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html
+For more information, see https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html
 
 ##<a id='limitations'></a>Limitations ##
 
-* Currently supported Buildpacks bundling New Relic Agent are the Java, node.js and PHP Buildpacks.
+* Currently supported buildpacks bundling New Relic Agent are the Java, node.js, and PHP buildpacks.
     * Java Buildpack v2.7 and later and v3.x
     * Node.js Buildpack v1.5.19 and later
     * PHP Buildpack v4.0+
@@ -202,4 +245,4 @@ More details on this can be found here:  https://docs.run.pivotal.io/buildpacks/
 
 ##<a id='feedback'></a>Feedback ##
 
-Please provide any bugs, feature requests, or questions to the Pivotal Cloud Foundry Feedback list.
+Please provide any bugs, feature requests, or questions to the PCF feedback list.
