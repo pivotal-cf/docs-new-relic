@@ -25,9 +25,9 @@ Each service plan is associated with an existing New Relic account.
 So, selecting a plan binds your app with the New Relic agent, and the agent starts reporting to the New Relic account which is associated with the selected plan.
 This makes the installation and subsequent use of New Relic on your PCF apps more straightforward.
 
-<p class="note"><strong>IMPORTANT</strong>: The current tile removes the `all_open` security group from the tile default security settings.
-If you were using a previous versions of the tile want to make your PCF environment more secure, 
-remove the `all_open` security group from the Application Security Group (ASG) settings. 
+<p class="note warning"><strong>WARNING</strong>: The current tile removes the <code>all_open</code> security group from the tile default security settings.
+If you are using a previous versions of the tile, make your PCF environment more secure by
+removing the <code>all_open</code> security group from the Application Security Group (ASG) settings. 
 The new version of the tile does not open the security, nor does it close the security if it was already open.</p>
 
 ##<a id='trial'></a>Trial License ##
@@ -47,7 +47,7 @@ The following table provides version and version-support information about New R
     </tr>
     <tr>
         <td>Release date</td>
-        <td>April 3, 2017</td>
+        <td>May 10, 2017</td>
     </tr>
     <tr>
         <td>Software component version</td>
