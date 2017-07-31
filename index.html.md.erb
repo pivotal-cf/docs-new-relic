@@ -23,7 +23,7 @@ The New Relic Service Broker for PCF tile installs the New Relic Service Broker 
 registers it as a service broker on PCF, and exposes its service plans on the Marketplace. 
 Each service plan is associated with an existing New Relic account. 
 So, selecting a plan binds your app with the New Relic agent, and the agent starts reporting to the New Relic account which is associated with the selected plan.
-This makes the installation and subsequent use of New Relic on your PCF apps more straightforward.
+This makes the installation and subsequent use of New Relic on your PCF apps easier and more straightforward.
 
 <p class="note warning"><strong>WARNING</strong>: The current tile removes the <code>all_open</code> security group from the tile default security settings.
 If you are using a previous versions of the tile, make your PCF environment more secure by
@@ -43,23 +43,23 @@ The following table provides version and version-support information about New R
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>v1.9.1</td>
+        <td>v1.11.0</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>May 10, 2017</td>
+        <td>July 28, 2017</td>
     </tr>
     <tr>
         <td>Software component version</td>
-        <td>New Relic Service Broker v1.9.1</td>
+        <td>New Relic Service Broker v1.11.0</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
-        <td>v1.8.x, v1.9.x, v1.10.x</td>
+        <td>v1.8.x, v1.9.x, v1.10.x, 1.11.x</td>
     </tr>
     <tr>
         <td>Compatible Elastic Runtime version(s)</td>
-        <td>v1.8.x, v1.9.x, 1.10.x</td>
+        <td>v1.8.x, v1.9.x, 1.10.x, 1.11.x</td>
     </tr>
     <tr>
         <td>IaaS support</td>
@@ -80,7 +80,7 @@ Follow these instructions to download the New Relic Service Broker for PCF tile 
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/).
 1. **Import** the product file to your Ops Manager installation.
-1. Click **Add** next to the uploaded product description in the Ops Manager "Available Products" view to add this product to your staging area.
+1. Click **"+"** sign or **"Add"** next to the uploaded product description in the Ops Manager left navigation view to add this product to your staging area.
 1. Click the newly added tile to review any configurable options.
 1. Click **Apply Changes** to install the service.
 
