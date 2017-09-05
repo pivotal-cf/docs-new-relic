@@ -9,6 +9,8 @@ New Relic APM supports real-time instrumentation and monitoring of application p
 via its embedded agent that runs with apps. 
 New Relic agent code embedded or bundled with the app instruments the app code and 
 publishes performance monitoring metrics and other details back to New Relic APM Dashboard.
+The language agents also send all of the application and browser events to New Relic Analytics tool, Insights, 
+for visualization and dashboarding.
 
 ##<a id='service-broker'></a>New Relic Service Broker ##
 
@@ -21,7 +23,7 @@ create a service instance and bind it to their apps either from Apps Manager or 
 
 The New Relic Service Broker for PCF tile installs the New Relic Service Broker as an app, 
 registers it as a service broker on PCF, and exposes its service plans on the Marketplace. 
-Each service plan is associated with an existing New Relic account. 
+Each service plan is associated with an existing New Relic account, which is configured during the tile setup. 
 So, selecting a plan binds your app with the New Relic agent, and the agent starts reporting to the New Relic account which is associated with the selected plan.
 This makes the installation and subsequent use of New Relic on your PCF apps easier and more straightforward.
 
@@ -29,6 +31,8 @@ This makes the installation and subsequent use of New Relic on your PCF apps eas
 If you are using a previous versions of the tile, make your PCF environment more secure by
 removing the <code>all_open</code> security group from the Application Security Group (ASG) settings. 
 The new version of the tile does not open the security, nor does it close the security if it was already open.</p>
+
+<p class="note"><strong>Note</strong>: Removed the minor version number from stemcell criteria to allow users to apply stemcell security patches, and fixed the version number on the tile icon to match the tile version.
 
 ##<a id='trial'></a>Trial License ##
 
@@ -43,23 +47,23 @@ The following table provides version and version-support information about New R
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>v1.11.0</td>
+        <td>v1.11.2</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>August 1, 2017</td>
+        <td>August 29, 2017</td>
     </tr>
     <tr>
         <td>Software component version</td>
-        <td>New Relic Service Broker v1.11.0</td>
+        <td>New Relic Service Broker v1.11.2</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
-        <td>v1.8.x, v1.9.x, v1.10.x, 1.11.x</td>
+        <td>v1.9.x, v1.10.x, and v1.11.x</td>
     </tr>
     <tr>
         <td>Compatible Elastic Runtime version(s)</td>
-        <td>v1.8.x, v1.9.x, 1.10.x, 1.11.x</td>
+        <td>v1.9.x, v1.10.x, and v1.11.x</td>
     </tr>
     <tr>
         <td>IaaS support</td>
@@ -69,10 +73,9 @@ The following table provides version and version-support information about New R
 
 ##<a id='upgrading'></a>Upgrading to the Latest Version ##
 
-Upgrade from v1.6 or v1.7 is supported. 
-Any older tile configuration in PCF Operations Manager (Ops Manager) v1.8, v1.9, or v1.10 shows with older
-New Relic Service Broker for PCF tile version. 
-Any v1.6 or v1.7 has configuration that can be imported and carried forward when importing this tile.</dd>
+The tile is supported on Ops Manager v1.9.x, v1.10.x, and v1.11.x.
+You can install the tile on any of these versions.
+No upgrade paths required for older verisons of the tile, because versions older than v1.9.0 are not supported anymore.</dd>
 
 ##<a id='installing'></a> Install via Ops Manager ##
 
