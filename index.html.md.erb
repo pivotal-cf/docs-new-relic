@@ -39,6 +39,8 @@ and fixed the upgrade path from PCF Operations Manager (Ops Manager) v1.9.x.</p>
 <p class="note"><strong>Note</strong>: Increased memory quota from 512&nbsp;MB to 1024&nbsp;MB due to requirements for new version of Java.
    Also increase memory quota range to 1024&nbsp;MB–2048&nbsp;MB.</p>
 
+<p class="note"><strong>Note</strong>: Upgraded the tile to support Ops Mgr 1.12.x.</p>
+
 
 
 ##<a id='trial'></a>Trial License ##
@@ -54,23 +56,23 @@ The following table provides version and version-support information about New R
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>v1.11.4</td>
+        <td>v1.12.0</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>October 16, 2017</td>
+        <td>October 30, 2017</td>
     </tr>
     <tr>
         <td>Software component version</td>
-        <td>New Relic Service Broker v1.11.4</td>
+        <td>New Relic Service Broker v1.12.0</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
-        <td>v1.9.x, v1.10.x, and v1.11.x</td>
+        <td>v1.9.x, v1.10.x, v1.11.x, and v1.12.x</td>
     </tr>
     <tr>
         <td>Compatible Elastic Runtime version(s)</td>
-        <td>v1.9.x, v1.10.x, and v1.11.x</td>
+        <td>v1.9.x, v1.10.x, v1.11.x, and v1.12.x</td>
     </tr>
     <tr>
         <td>IaaS support</td>
@@ -80,9 +82,10 @@ The following table provides version and version-support information about New R
 
 ##<a id='upgrading'></a>Upgrading to the Latest Version ##
 
-The tile is supported on Ops Manager v1.9.x, v1.10.x, and v1.11.x.
-You can install the tile on any of these versions.
-No upgrade paths required for older verisons of the tile, because versions older than v1.9.0 are not supported anymore.</dd>
+<dd>- The tile is supported on Ops Manager v1.9.x, v1.10.x, v1.11.x, and 1.12.x.
+- You can install the tile on any of these versions, and upgrade from 1.9.x to any Ops Mgr version up to and including 1.11.x.
+- No upgrade paths required for older verisons of the tile, since versions older than v1.9.0 are not supported anymore.
+- There is no upgrade path available from older versions of Ops Mgr to 1.12. You need to start fresh, or uninstall the older version of the tile, and install 1.12.0</dd>
 
 ##<a id='installing'></a> Install via Ops Manager ##
 
