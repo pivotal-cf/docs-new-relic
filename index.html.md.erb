@@ -7,24 +7,27 @@ This is documentation for the [New Relic Service Broker for Pivotal Cloud Foundr
 
 New Relic APM supports real-time instrumentation and monitoring of application performance 
 via its embedded agent that runs with apps. 
-New Relic agent code embedded or bundled with the app instruments the app code and 
-publishes performance monitoring metrics and other details back to New Relic APM Dashboard.
-The language agents also send all of the application and browser events to New Relic Analytics tool, Insights, 
-for visualization and dashboarding.
+
+New Relic agent code publishes performance monitoring metrics and other details back to New Relic APM Dashboard.
+
+The language agents also send all of the application and browser events to New Relic Analytics tool, Insights, for visualization and dashboarding.
 
 ##<a id='service-broker'></a>New Relic Service Broker ##
 
 A service broker allows Cloud Foundry apps to bind to services and consume the services easily 
 from Pivotal Apps Manager or from the command line. 
+
 New Relic Service Broker for PCF enables you to use one or more New Relic accounts and 
 is deployed as a Java app on PCF. 
+
 The broker exposes the New Relic service on the Marketplace and allows users to directly 
 create a service instance and bind it to their apps either from Apps Manager or from the command line.
 
 The New Relic Service Broker for PCF tile installs the New Relic Service Broker as an app, 
 registers it as a service broker on PCF, and exposes its service plans on the Marketplace. 
-Each service plan is associated with an existing New Relic account, which is configured during the tile setup. 
-So, selecting a plan binds your app with the New Relic agent, and the agent starts reporting to the New Relic account which is associated with the selected plan.
+Each service plan is associated with an existing New Relic account, which is configured during the tile setup.
+
+So selecting a plan binds your app with the New Relic agent, and the agent starts reporting to the New Relic account which is associated with the selected plan.
 This makes the installation and subsequent use of New Relic on your PCF apps easier and more straightforward.
 
 <p class="note warning"><strong>WARNING</strong>: The current tile removes the <code>all_open</code> security group from the tile default security settings.
@@ -82,10 +85,10 @@ The following table provides version and version-support information about New R
 
 ##<a id='upgrading'></a>Upgrading to the Latest Version ##
 
-<dd>- The tile is supported on Ops Manager v1.9.x, v1.10.x, v1.11.x, and 1.12.x.
-- You can install the tile on any of these versions, and upgrade from 1.9.x to any Ops Mgr version up to and including 1.11.x.
-- No upgrade paths required for older verisons of the tile, since versions older than v1.9.0 are not supported anymore.
-- There is no upgrade path available from older versions of Ops Mgr to 1.12. You need to start fresh, or uninstall the older version of the tile, and install 1.12.0</dd>
+* The tile is supported on Ops Manager v1.9.x, v1.10.x, v1.11.x, and 1.12.x.
+* You can install the tile on any of these versions, and upgrade from 1.9.x to any Ops Mgr version up to and including 1.12.x.
+* No upgrade paths are required for older verisons of the tile, since versions older than v1.9.0 are not supported.
+* There is no upgrade path available from older versions of Ops Mgr to 1.12. You need to start fresh, or uninstall the older version of the tile, and install 1.12.0
 
 ##<a id='installing'></a> Install via Ops Manager ##
 
