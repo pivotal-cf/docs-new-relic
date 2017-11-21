@@ -131,6 +131,12 @@ Follow these instructions to download the New Relic Service Broker for PCF tile 
 
 	<%= image_tag("save.png") %>
 
+
+1. As of version 1.12.3 of the tile a configuration tab for **Service Access** has been added which allows you to decide whether or not the tile should be available globally to all users in all **orgs**. In version 1.12.3 by default this value is set to false, and if you'd like the tile to be available in the marketplace for all orgs, you explicitly need to select this checkbox. In versions higher than 1.12.3 by default the falg is selected, which means that by default the tile is available in all orgs.
+
+    <%= image_tag("service-access.png") %>
+
+
 1. Apply your changes.
 
 1. On completion of the installation, check the Services Marketplace in Apps Manager.
