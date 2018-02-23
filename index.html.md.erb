@@ -5,37 +5,31 @@ owner: Partners
 
 This is documentation for the [New Relic Service Broker for Pivotal Cloud Foundry (PCF)](https://network.pivotal.io/products/p-new-relic) tile.
 
-New Relic APM supports real-time instrumentation and monitoring of application performance 
-via its embedded agent that runs with apps. 
+New Relic APM supports real-time instrumentation and monitoring of application performance via its embedded agent that runs with apps. 
 
 New Relic agent code publishes performance monitoring metrics and other details back to New Relic APM Dashboard.
 
 The language agents also send all of the application and browser events to New Relic Analytics tool, Insights, for visualization and dashboarding.
 
-##<a id='service-broker'></a>New Relic Service Broker ##
+## <a id='service-broker'></a> New Relic Service Broker ##
 
-A service broker allows Cloud Foundry apps to bind to services and consume the services easily 
-from Pivotal Apps Manager or from the command line. 
+A service broker allows Cloud Foundry apps to bind to services and consume the services easily from Pivotal Apps Manager or from the command line. 
 
-New Relic Service Broker for PCF enables you to use one or more New Relic accounts and 
-is deployed as a Java app on PCF. 
+New Relic Service Broker for PCF enables you to use one or more New Relic accounts and is deployed as a Java app on PCF. 
 
-The broker exposes the New Relic service on the Marketplace and allows users to directly 
-create a service instance and bind it to their apps either from Apps Manager or from the command line.
+The broker exposes the New Relic service on the Marketplace and allows users to directly create a service instance and bind it to their apps either from Apps Manager or from the command line.
 
-The New Relic Service Broker for PCF tile installs the New Relic Service Broker as an app, 
-registers it as a service broker on PCF, and exposes its service plans on the Marketplace. 
+The New Relic Service Broker for PCF tile installs the New Relic Service Broker as an app, registers it as a service broker on PCF, and exposes its service plans on the Marketplace. 
 Each service plan is associated with an existing New Relic account, which is configured during the tile setup.
 
-So selecting a plan binds your app with the New Relic agent, and the agent starts reporting to the New Relic account which is associated with the selected plan.
+Selecting a plan binds your app with the New Relic agent, and the agent starts reporting to the New Relic account which is associated with the selected plan.
 This makes the installation and subsequent use of New Relic on your PCF apps easier and more straightforward.
 
-<p class="note warning"><strong>WARNING</strong>: The current tile removes the <code>all_open</code> security group from the tile default security settings.
-If you are using a previous versions of the tile, make your PCF environment more secure by
-removing the <code>all_open</code> security group from the Application Security Group (ASG) settings. 
+<p class="note warning"><strong>WARNING:</strong> The current tile removes the <code>all_open</code> security group from the tile default security settings.
+If you are using a previous versions of the tile, make your PCF environment more secure by removing the <code>all_open</code> security group from the Application Security Group (ASG) settings. 
 The new version of the tile does not open the security, nor does it close the security if it was already open.</p>
 
-<p class="note"><strong>Note</strong>: Removed the minor version number from stemcell criteria to allow users 
+<p class="note"><strong>Note:</strong> Removed the minor version number from stemcell criteria to allow users 
 to apply stemcell security patches, fixed the version number on the tile icon to match the tile version,
 and fixed the upgrade path from PCF Operations Manager (Ops Manager) v1.9.x.</p>
 
@@ -49,11 +43,13 @@ and fixed the upgrade path from PCF Operations Manager (Ops Manager) v1.9.x.</p>
 <p class="note"><strong>Note</strong>: Added support for PCF 2.0.x</p>
 
 
-##<a id='trial'></a>Trial License ##
+## <a id='trial'></a> Trial License
 
 You can obtain a [60-day free trial license](http://newrelic.com/signup?funnel=pivotal-cloud-foundry&partner=Pivotal+Cloud+Foundry&product_id=Standard&promo_code=PVCF60PRO).
 
-##<a id='product-snapshot'></a>Product Snapshot ##
+## <a id='product-snapshot'></a> Product Snapshot
+
+<p class='note'><strong>Note:</strong> As of PCF v2.0, Elastic Runtime is renamed Pivotal Application Service (PAS).</p>
 
 The following table provides version and version-support information about New Relic Service Broker for PCF.
 
@@ -77,7 +73,7 @@ The following table provides version and version-support information about New R
         <td>v1.9.x, v1.10.x, v1.11.x, v1.12.x, and v2.0.x</td>
     </tr>
     <tr>
-        <td>Compatible Pivotal Application Service (formerly known as Elastic Runtime) version(s)</td>
+        <td>Compatible Pivotal Application Service version(s)</td>
         <td>v1.9.x, v1.10.x, v1.11.x, v1.12.x, and v2.0.x</td>
     </tr>
     <tr>
@@ -85,27 +81,27 @@ The following table provides version and version-support information about New R
         <td>AWS, GCP, and vSphere</td>
     </tr>
 </table>
-\* As of PCF v2.0, <em>Elastic Runtime</em> is renamed <em>Pivotal Application Service (PAS)</em>.
 
-##<a id='upgrading'></a>Upgrading to the Latest Version ##
+
+## <a id='upgrading'></a> Upgrading to the Latest Version
 
 * The tile is supported on Ops Manager v1.9.x, v1.10.x, v1.11.x, v1.12.x, and v2.0.x.
-* You can install the tile on any of these versions, and upgrade from 1.9.x to any Ops Mgr version up to and including 2.0.x.
+* You can install the tile on any of these versions, and upgrade from v1.9.x to any Ops Manager version up to and including 2.0.x.
 * No upgrade paths are required for older verisons of the tile, since versions older than v1.9.0 are not supported.
-* Versions 1.12.6+ of the tile support migration from older versions of the tile, and preserve exsiting services and service plans
-* If you are using tiles older than 1.11.4, the upgrade path is to first upgrade to 1.11.4, and then upgrade to the latest version of the tile
+* Versions v1.12.6+ of the tile support migration from older versions of the tile, and preserve existing services and service plans.
+* If you are using tiles older than v1.11.4, you must first upgrade to v1.11.4, then upgrade to the latest version of the tile.
 
-##<a id='installing'></a> Install via Ops Manager ##
+## <a id='installing'></a> Installing Through Ops Manager
 
-Follow these instructions to download the New Relic Service Broker for PCF tile and install it on PCF Operations Manager (Ops Manager).
+To download the New Relic Service Broker for PCF tile and install it on PCF Ops Manager, do the following:
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/).
-1. **Import** the product file to your Ops Manager installation.
-1. Click **"+"** sign or **"Add"** next to the uploaded product description in the Ops Manager left navigation view to add this product to your staging area.
-1. Click the newly added tile to review any configurable options.
-1. Click **Apply Changes** to install the service.
+1. Import the product file to your Ops Manager installation.
+1. Click the **+** sign or **Add** next to the uploaded product description in the Ops Manager left navigation view to add this product to your staging area.
+1. Click the newly added tile and review any configurable options.
+1. Click **Apply Changes**.
 
-##<a id='configuring'></a>Configuring the Tile ##
+## <a id='configuring'></a>Configuring the Tile
 
 1. Log in to Ops Manager.
 1. Click **Import a Product** and import the New Relic Service Broker for PCF tile.
@@ -136,7 +132,7 @@ Follow these instructions to download the New Relic Service Broker for PCF tile 
 	<%= image_tag("save.png") %>
 
 
-1. As of version 1.12.3 of the tile a configuration tab for **Service Access** has been added, which allows you to decide whether or not the tile should be available globally to all users in all **orgs**. In version 1.12.3 by default this value is set to false, and if you'd like the tile to be available in the marketplace for all orgs, you explicitly need to select this checkbox. In versions higher than 1.12.3 by default the flag is selected, which means that by default the tile is available in all orgs.
+1. As of v1.12.3 of the tile, a configuration tab for **Service Access** has been added, which allows you to decide whether or not the tile should be available globally to all users in all orgs. In v1.12.3, this value is set to `false` by default, and if you want the tile to be available in the marketplace for all orgs, you must select this checkbox. In v1.12.3+, the flag is selected by default, so the tile is available in all orgs.
 
     <%= image_tag("service-access.png") %>
 
@@ -155,7 +151,7 @@ Follow these instructions to download the New Relic Service Broker for PCF tile 
 
     <%= image_tag("bind.png") %>
 
-1. In a terminal window, use the `cf restage` command to make the changes effective.
+1. In a terminal window, use the `cf restage` command to make the changes.
 
     <pre class='terminal'>
       $ cf restage APPNAME
@@ -184,18 +180,13 @@ Follow these instructions to download the New Relic Service Broker for PCF tile 
     Figure 13.7: New Relic JVMs View<br>
     <%= image_tag("view13.png") %>
 
-##<a id='http-proxy'></a>Configuration with HTTP Proxy ##
+## <a id='http-proxy'></a> Configuration with HTTP Proxy
 
-If the PCF environment needs to use an HTTP or HTTPS proxy for external outbound communication, 
-the service broker itself does not need to know anything about the HTTP proxy, because it just relays 
-the license keys to the consumer apps. 
-The consumer app should specify the http\_proxy or https\_proxy as an environment variable 
-for the agent to communicate externally with non-Java apps, and use JAVA_OPTS for Java apps. 
-In addition, the New Relic Agent should also be configured with its own set of 
-parameters (**-Dnewrelic.config.\***) to communicate with its controller through the proxy for Java 
-language apps.
+If the PCF environment needs to use an HTTP or HTTPS proxy for external outbound communication, the service broker itself does not need to know anything about the HTTP proxy, as it relays the license keys to the consumer apps. 
+The consumer app should specify the http\_proxy or https\_proxy as an environment variable for the agent to communicate externally with non-Java apps, and use `JAVA_OPTS` for Java apps. 
+In addition, the New Relic Agent should also be configured with its own set of parameters (`-Dnewrelic.config.\*`) to communicate with its controller through the proxy for Java language apps.
 
-**Specify using http_proxy for the New Relic non-Java app agent to talk to its controller via the proxy**
+To specify using `http_proxy` for the New Relic non-Java app agent to talk to its controller using the proxy, use the following commands:
 
 <pre class='terminal'>
   $ cf set-env APPNAME http_proxy ‘http://user:password@proxy-server.customer.example.com:8080'
@@ -203,7 +194,7 @@ language apps.
   $ cf set-env APPNAME https_proxy ‘http://user:password@proxy-server.customer.example.com:8080'
 </pre>
 
-**Specify using JAVA_OPTS for the New Relic Java agent to talk to its controller via the proxy**
+To specify using `JAVA_OPTS` for the New Relic Java agent to talk to its controller using the proxy, use the following command:
 
 <pre class='terminal'>
   $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar
@@ -211,7 +202,7 @@ language apps.
   -Dnewrelic.config.proxy_port=8080 “
 </pre>
 
-**If a Java app also needs to talk through a proxy, add the Java proxy settings in addition to the New Relic agent proxy settings**
+If a Java app also needs to talk through a proxy, add the Java proxy settings in addition to the New Relic agent proxy settings with the following command:
 
 <pre class='terminal'>
   $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar
@@ -221,7 +212,7 @@ language apps.
   -Dhttps.proxyHost=proxy.customer.example.com -Dhttps.proxyPort=8080  “
 </pre>
 
-**For a non-Java app that needs to talk outbound via a proxy**
+For a non-Java app that needs to talk outbound using a proxy, use the following commands:
 
 <pre class='terminal'>
   $ cf set-env APPNAME http_proxy http://user@password:myproxy....:8080/
@@ -234,19 +225,18 @@ Whenever making changes to Cloud Foundry environment variables, you must restage
   $ cf restage APPNAME
 </pre>
 
-These environment variables can either be set individually per app, or with env variable groups to be set 
-for all apps as part of staging, running environments, etc., using the Cloud Foundry Command Line Interface (cf CLI) tool. 
+These environment variables can either be set individually per app, or with environment variable groups to be set 
+for all apps as part of staging, running environments, etcetera using the Cloud Foundry Command Line Interface (cf CLI) tool. 
 
 **Environment Variable Groups**
 
-* **running-environment-variable-group, revg**: Retrieve the contents of the running environment variable group
-* **staging-environment-variable-group, sevg**: Retrieve the contents of the staging environment variable group
-* **set-staging-environment-variable-group, ssevg**: Pass parameters as JSON to create a staging environment variable group
-* **set-running-environment-variable-group, srevg**: Pass parameters as JSON to create a running environment variable group
+* `running-environment-variable-group`/`revg`: Retrieve the contents of the running environment variable group
+* `staging-environment-variable-group`/`sevg`: Retrieve the contents of the staging environment variable group
+* `set-staging-environment-variable-group`/`ssevg`: Pass parameters as JSON to create a staging environment variable group
+* `set-running-environment-variable-group`/`srevg`: Pass parameters as JSON to create a running environment variable group
 
-Use the JAVA\_OPTS environment variable to specify New Relic Agent-specific environment variables in the 
-Staging environment group so the Java buildpack can use that and push it in the correct place. 
-Specifying JAVA\_OPTS in the Runtime environment variable group will not yield anything, as the buildpack will not know about it.
+Use the `JAVA\_OPTS` environment variable to specify New Relic Agent-specific environment variables in the staging environment group so the Java buildpack can use that and push it in the correct place. 
+Specifying `JAVA\_OPTS` in the Runtime environment variable group will not yield anything, as the buildpack will not know about it.
 
 Example:
 
@@ -260,24 +250,22 @@ Example:
   -Djavax.net.debug=all ", "test_env_profile" : "Staging" }'
 </pre>
 
-For more information, see the following documentation:
-[https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file#config-options-precedence](https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file#config-options-precedence).
+For more information, see [Configuration settings precedence](https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file#config-options-precedence).
 
-##<a id='offline-dependencies'></a>Packaging Dependencies for Offline Buildpacks ##
+## <a id='offline-dependencies'></a> Packaging Dependencies for Offline Buildpacks
 
-If you are running PCF in an offline manner, you should recreate and package the dependencies, including the New Relic agent binaries, via offline buildpacks in your PCF environment.
+If you are running PCF in an offline manner, you should recreate and package the dependencies, including the New Relic agent binaries, using offline buildpacks in your PCF environment.
 
-For more information, see https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html
+For more information, see [Packaging Dependencies for Offline Buildpacks](https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html).
 
-##<a id='limitations'></a>Limitations ##
+## <a id='limitations'></a> Limitations
 
 * Currently supported buildpacks bundling New Relic Agent are the Java, node.js, PHP, and .NET Core buildpacks.
-    * Java Buildpack v2.7 and later and v3.x
-    * Node.js Buildpack v1.5.19 and later
-    * PHP Buildpack v4.0 and later
-    * .NET Core requires that you push your app using **"cf v3-push"** and specify New Relic's supply buildpack with **"-b"** option in the command line as the first buildpack in sequence
-* Similar support would be built for other language buildpacks in future releases.
+    * Java Buildpack v2.7+ and v3.x
+    * Node.js Buildpack v1.5.19+
+    * PHP Buildpack v4.0+
+    * .NET Core requires that you push your app using `cf v3-push` and specify New Relic's supply buildpack with `-b` option in the command line as the first buildpack in sequence.
 
-##<a id='feedback'></a>Feedback ##
+## <a id='feedback'></a> Feedback
 
 Please provide any bugs, feature requests, or questions to the PCF feedback list.
