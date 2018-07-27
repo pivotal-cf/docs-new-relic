@@ -45,34 +45,39 @@ The following table provides version and version-support information about New R
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>v1.12.9</td>
+        <td>v1.12.13</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>February 20, 2018</td>
+        <td>July 27, 2018</td>
     </tr>
     <tr>
         <td>Software component version</td>
-        <td>New Relic Service Broker v1.12.9</td>
+        <td>New Relic Service Broker v1.12.13</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
-        <td>v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, and v2.1.x</td>
+        <td>v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, v2.1.x, and v2.2.x</td>
     </tr>
     <tr>
         <td>Compatible Pivotal Application Service version(s)</td>
-        <td>v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, and v2.1.x</td>
+        <td>v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, v2.1.x, and v2.2.x</td>
     </tr>
     <tr>
         <td>IaaS support</td>
-        <td>AWS, GCP, and vSphere</td>
+        <td>AWS, GCP, Azure, and vSphere</td>
     </tr>
 </table>
 
 
 ## <a id='upgrading'></a> Upgrading to the Latest Version
 
-* The tile is supported on Ops Manager v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, and v2.1.x.
+* Tile version 1.12.13 allows users to change New Relic license key in existing service plans. To upgrade from tile versions 1.12.12 and older you need to provide the original unique **"plan guid"** in the property called **"Plan Guid Override"** for each of the existing service plans. You can use the following command to obtain the original plan guids:
+```
+  cf curl $(cf curl /v2/services?q=label:newrelic | grep "service_plans_url" | awk '{print $2}' | sed 's/[",]//g') | egrep "\"name\":|\"unique_id\":" | sed 's/[\",]//g' | tr -s " " | awk ' {name=$0; getline; printf("\t%-40s %-40s\n",name,$0)}'
+```
+* For plans that were created with more recent versions of the tile than 1.12.12, leave **"Plan Guid Override"** blank.
+* The tile is supported on Ops Manager v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, v2.1.x, and v2.2.x.
 * You can install the tile on any of these versions, and upgrade from v1.9.x to any Ops Manager version up to and including 2.1.x.
 * No upgrade paths are required for older verisons of the tile, since versions older than v1.9.0 are not supported.
 * Versions v1.12.6+ of the tile support migration from older versions of the tile, and preserve existing services and service plans.
