@@ -43,7 +43,7 @@ The following table provides version and version-support information about New R
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>v1.12.13</td>
+        <td>v1.12.9</td>
     </tr>
     <tr>
         <td>Release date</td>
@@ -70,7 +70,7 @@ The following table provides version and version-support information about New R
 
 ## <a id='upgrading'></a> Upgrading to the Latest Version
 
-* New Relic Service Broker v1.12.13 allows users to change the New Relic license key in existing service plans. To upgrade from v1.12.12 and older, you must provide the original unique **"plan guid"** in the property called **"Plan Guid Override"** for each of the existing service plans. You can use the following command to obtain the original plan GUIDs:
+* New Relic Service Broker v1.12.9 allows users to change the New Relic license key in existing service plans. To upgrade from v1.12.6 and older, you must provide the original unique **"plan guid"** in the property called **"Plan Guid Override"** for each of the existing service plans. You can use the following command to obtain the original plan GUIDs:
 ```
   cf curl $(cf curl /v2/services?q=label:newrelic | grep "service_plans_url" | awk '{print $2}' | sed 's/[",]//g') | egrep "\"name\":|\"unique_id\":" | sed 's/[\",]//g' | tr -s " " | awk ' {name=$0; getline; printf("\t%-40s %-40s\n",name,$0)}'
 ```
