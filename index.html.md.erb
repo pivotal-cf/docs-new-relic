@@ -43,23 +43,23 @@ The following table provides version and version-support information about New R
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>v1.12.9</td>
+        <td>v1.12.18</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>February 21, 2018</td>
+        <td>August 10, 2018</td>
     </tr>
     <tr>
         <td>Software component version</td>
-        <td>New Relic Service Broker v1.12.9</td>
+        <td>New Relic Service Broker v1.12.18</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
-        <td>v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, and v2.1.x</td>
+        <td>v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, v2.1.x, and v2.2.x</td>
     </tr>
     <tr>
         <td>Compatible Pivotal Application Service version(s)</td>
-        <td>v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, and v2.1.x</td>
+        <td>v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, v2.1.x, and v2.2.x</td>
     </tr>
     <tr>
         <td>IaaS support</td>
@@ -70,16 +70,15 @@ The following table provides version and version-support information about New R
 
 ## <a id='upgrading'></a> Upgrading to the Latest Version
 
-* New Relic Service Broker v1.12.9 allows users to change the New Relic license key in existing service plans. To upgrade from v1.12.6 and older, you must provide the original unique **"plan guid"** in the property called **"Plan Guid Override"** for each of the existing service plans. You can use the following command to obtain the original plan GUIDs:
+* New Relic Service Broker 1.12.18 allows users to change New Relic license key in existing service plans. In tile versions 1.12.12 and older the plan unique guids were calculated differently, and in order for the plan services to work properly and not break the compatibility the guids must be the same as before. The <code>"migration script"</code> preserves the plan guids for existing plans in the plans collection for tile 1.12.12 and older. You could see 2 new properties labeled <strong>"pre-1.12.12 plan?"</strong> and  <strong>"Plan Guid Override (broker 1.12.12 or older)"</strong> in the plans collection for each plan in tile configuration. <strong>DO NOT CHANGE</strong> either of these properties, as they get set internally where required. For plans that were created with more recent versions of the tile than 1.12.12, leave <strong>"pre-1.12.12 plan"</strong> unchecked, and <strong>"Plan Guid Override"</strong> blank. <strong>NOTE:</strong> The only case where you need to override the "Plan Guid Override" property is when you have changed the original license key that was associated with the plan creatd by a tile version 1.12.12 or older. You can obtain the original plan guid from Cloud Controler by executing the following command and entering the original guid here in the "Plan Guid Override" property:
 ```
   cf curl $(cf curl /v2/services?q=label:newrelic | grep "service_plans_url" | awk '{print $2}' | sed 's/[",]//g') | egrep "\"name\":|\"unique_id\":" | sed 's/[\",]//g' | tr -s " " | awk ' {name=$0; getline; printf("\t%-40s %-40s\n",name,$0)}'
 ```
-* For plans that were created with more recent versions of the tile than v1.12.12, leave **"Plan Guid Override"** blank.
-* The tile is supported on Ops Manager v1.9, v1.10, v1.11, v1.12, v2.0, v2.1, and v2.2.
-* You can install the tile on any of these versions, and upgrade from v1.9 to any Ops Manager version up to and including v2.1.
+* The tile is supported on Ops Manager v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, v2.1.x, and v2.2.x.
+* You can install the tile on any of these versions, and upgrade from v1.9.x to any Ops Manager version up to and including 2.2.x.
 * No upgrade paths are required for older verisons of the tile, since versions older than v1.9.0 are not supported.
-* v1.12.6 and later of the tile support migration from older versions of the tile, and preserve existing services and service plans.
-* If you are using tiles older than v1.11.4, you must first upgrade to v1.11.4, then upgrade to the latest version of the tile.
+* Versions v1.12.6+ of the tile support migration from older versions of the tile, and preserve existing services and service plans.
+* If you are using tiles older than v1.11.4, you must first upgrade to v1.11.4, then to v1.12.9, and then upgrade to the latest version of the tile.
 
 
 ## <a id='installing'></a> Installing Through Ops Manager
