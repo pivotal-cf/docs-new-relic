@@ -43,23 +43,23 @@ The following table provides version and version-support information about New R
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>v1.12.18</td>
+        <td>v1.12.19</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>August 10, 2018</td>
+        <td>January 14, 2019</td>
     </tr>
     <tr>
         <td>Software component version</td>
-        <td>New Relic Service Broker v1.12.18</td>
+        <td>New Relic Service Broker v1.12.19</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
-        <td>v1.12.x, v2.0.x, v2.1.x, v2.2.x, and v2.3.x</td>
+        <td>v2.2.x, v2.3.x, and v2.4.x</td>
     </tr>
     <tr>
         <td>Compatible Pivotal Application Service version(s)</td>
-        <td>v1.12.x, v2.0.x, v2.1.x, v2.2.x, and v2.3.x</td>
+        <td>v2.2.x, v2.3.x, and v2.4.x</td>
     </tr>
     <tr>
         <td>IaaS support</td>
@@ -70,7 +70,7 @@ The following table provides version and version-support information about New R
 
 ## <a id='upgrading'></a> Upgrading to the Latest Version
 
-* New Relic Service Broker v1.12.18 allows users to change New Relic license key in existing service plans. In v1.12.12 and earlier, the plan unique GUIDs were calculated differently. In order for the plan services to work properly and not break the compatibility, the GUIDs must be the same as before. The `"migration script"` preserves the plan GUIDs for existing plans in the plan collection for v1.12.12 and earlier. You can see 2 new properties labeled **"pre-1.12.12 plan?"** and **"Plan Guid Override (broker 1.12.12 or older)"** in the plan collection for each plan in the tile configuration. **Do not change** either of these properties, as they are set internally where required. For plans that were created with v1.12.12 or later, leave **"pre-1.12.12 plan"** unchecked, and **"Plan Guid Override"** blank.
+* New Relic Service Broker v1.12.18 and higher allows users to change New Relic license key in existing service plans. In v1.12.12 and earlier, the plan unique GUIDs were calculated differently. In order for the plan services to work properly and not break the compatibility, the GUIDs must be the same as before. The `"migration script"` preserves the plan GUIDs for existing plans in the plan collection for v1.12.12 and earlier. You can see 2 new properties labeled **"pre-1.12.12 plan?"** and **"Plan Guid Override (broker 1.12.12 or older)"** in the plan collection for each plan in the tile configuration. **Do not change** either of these properties, as they are set internally where required. For plans that were created with v1.12.12 or later, leave **"pre-1.12.12 plan"** unchecked, and **"Plan Guid Override"** blank.
 <p class='note'><strong>Note:</strong> The only case where you must override the "Plan Guid Override" property is when you have changed the original license key that was associated with the plan created by New Relice Service Broker v1.12.12 or earlier. You can obtain the original plan GUID from Cloud Controller by running the following command and entering the original GUID in the "Plan Guid Override" property:
 <pre class='term'>
   cf curl $(cf curl /v2/services?q=label:newrelic | grep "service_plans_url" | awk '{print $2}' | sed 's/[",]//g') | egrep "\"name\":|\"unique_id\":" | sed 's/[\",]//g' | tr -s " " | awk ' {name=$0; getline; printf("\t%-40s %-40s\n",name,$0)}'
@@ -89,8 +89,8 @@ The following table provides version and version-support information about New R
 
 ## <a id='installing'></a> Installing Through Ops Manager
 
-To download the New Relic Service Broker for PCF tile and install it on PCF Ops Manager, do the following:
-
+To download New Relic Service Broker for PCF tile and install it on PCF Ops Manager, do the following:
+<br/><br/>
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/).
 
 1. Import the product file to your Ops Manager installation.
@@ -108,48 +108,88 @@ To download the New Relic Service Broker for PCF tile and install it on PCF Ops 
 
 1. Click **Import a Product** and import the New Relic Service Broker for PCF tile.
 
-    <%= image_tag("import-product.png") %>
+    <%= image_tag("01-import-product.png") %>
 
-1. Click **Add** on the New Relic Service Broker for PCF tile.
+1. Click the "+" button to the right of "New Relic Service Broker" that you uploaded
 
-    <%= image_tag("add.png") %>
+    <%= image_tag("02-imported-product.png") %>
 
 1. Select the New Relic tile.
 
-    <%= image_tag("select.png") %>
+    <%= image_tag("03-configure-1..png") %>
+
+1. Configure Availability Zone and Network.
+
+    <%= image_tag("05-configure-3-network.png") %>
+
+1. Configure Service Broker Global Access.
+    * You can either keep the global access enabled for all service plans (default), or you can disable global access, and later in the configuration enable access for one or more **"orgs"** for each **"service plan"** that you add.
+
+    <%= image_tag("06-configure-4-global-access.png") %>
 
 1. Configure the New Relic Service Broker.
     * Click **Add** on the far right of the Service Plan screen to create a new service plan.
 
-    <%= image_tag("configure.png") %>
+    <%= image_tag("08-configure-plans-1.png") %>
 
 1. Create a service plan with your New Relic license key.
-    * Log in to your New Relic account and navigate to the **Account Settings** page from the drop-down menu in the upper right corner of the page. Save the plan(s).
+    * Enter a name for the service plan (no spaces)
+    * Enter description of the plan
+    * Log in to your New Relic account and navigate to the **Account Settings** page from the drop-down menu in the upper right corner of the page. Copy the license key from your New Relic account and paste it here
 
-    <%= image_tag("account-info.png") %>
+    <%= image_tag("09-nr-license-key.png") %>
 
-	<%= image_tag("save.png") %>
+    * If you are upgrading from New Relic Servie Broker 1.12.12 or older, make sure you follow the instructions in the upgrade section (**"Upgrading to the Latest Version"**) of this document to check "pre 1.12.12 plan" flag and enter the the pre 1.12.12 plan guid
+    * If you are running New Relic Firehose Nozzle and would like to route the data for each application to a separate New Relic account (as opposed to New Relic's central Firehose Nozzle account) enter the target New Relic account and Insights Insert Key here
+    * If in previous steps you unchecked **"Global Access"**, you need to enter a comma-separaed list of orgs so that the system enables service access for them to allow users to create service instances of this plan
 
+	  <%= image_tag("10-configure-plans-3.png") %>
 
-1. As of v1.12.3 of the tile, a configuration tab for **Service Access** has been added, which allows you to decide whether or not the tile should be available globally to all users in all orgs. In v1.12.3, this value is set to `false` by default, and if you want the tile to be available in the marketplace for all orgs, you must select this checkbox. In v1.12.3 and later, the flag is selected by default, so the tile is available in all orgs.
+1. Select the button on top the page to go to **"INSTALLATION DASHBOARD**"
 
-    <%= image_tag("service-access.png") %>
+    <%= image_tag("11-installation-dashboard.png") %>
+
 
 1. Apply your changes.
+    * Select the blue button on the top right
+    * To speed up the process you could uncheck **Select All Products** checkbox, and just select to apply change to **"New Relic Service Broker"** tile 
+ 
+    <%= image_tag("12-apply-changes-1.png") %>
 
-1. On completion of the installation, check the Services Marketplace in Apps Manager.
+1. On completion of the installation, check the Services Marketplace in Apps Manager. Select **"New Relic"** tile
 
-    <%= image_tag("marketplace.png") %>
+    <%= image_tag("15-marketplace.png") %>
 
-1. View New Relic Service Plans.
+1. View New Relic Service Plans, and select the desired plan
 
-    <%= image_tag("plans.png") %>
+    <%= image_tag("16-marketplace-broker-select-plan.png") %>
+
+1. Enter the service instance name and click on **"CREATE"** button to create the service instance
+
+    <%= image_tag("17-marketplace-broker-service-instance-name.png") %>
+
+1. Service Plan created
+
+    <%= image_tag("18-marketplace-serevice-created.png") %>
 
 1. Bind the New Relic Service to an app.
+    * In Apps Manager go to an application
 
-    <%= image_tag("bind.png") %>
+    <%= image_tag("19-application.png") %>
 
-1. In a terminal window, run `cf restage` to make the changes.
+    * Select **"Service"** tab
+    * Click the **"BIND SERVICE"** button and select the service instance you just created,
+
+    <%= image_tag("20-application-services.png") %>
+
+    * Click the **"BBIND"** button on the bottom right
+
+    <%= image_tag("21-application-services-bind-service-instance.png") %>
+
+1. Restage the application
+    * you can either select the link on top the "bind" page, or in a terminal window, run `cf restage` to make the changes
+
+    <%= image_tag("22-application-restage.png") %>
 
     <pre class='terminal'>
       $ cf restage APPNAME
@@ -157,26 +197,26 @@ To download the New Relic Service Broker for PCF tile and install it on PCF Ops 
 
 1. Log in to New Relic to view monitoring data.
 
-    Figure 13.1: New Relic App Monitoring Dashboard<br>
-    <%= image_tag("view07.png") %>
+    Figure 17.1: New Relic App Monitoring Dashboard<br>
+    <%= image_tag("24-nr-overview.png") %>
 
-    Figure 13.2: New Relic Transactions View<br>
-    <%= image_tag("view08.png") %>
+    Figure 17.2: New Relic Transactions View<br>
+    <%= image_tag("25-nr-transactions-view.png") %>
 
-    Figure 13.3: Transaction Traces View<br>
-    <%= image_tag("view09.png") %>
+    Figure 17.3: Transaction Traces View<br>
+    <%= image_tag("26-nr-transaction-trace.png") %>
 
-    Figure 13.4: New Relic Database View<br>
-    <%= image_tag("view10.png") %>
+    Figure 17.4: New Relic Database View<br>
+    <%= image_tag("27-nr-database-view.png") %>
 
-    Figure 13.5: New Relic Web Transactions View<br>
-    <%= image_tag("view11.png") %>
+    Figure 17.5: New Relic Web Transactions View<br>
+    <%= image_tag("28-view11.png") %>
 
-    Figure 13.6: New Relic Top Web Transactions View<br>
-    <%= image_tag("view12.png") %>
+    Figure 17.6: New Relic Top Web Transactions View<br>
+    <%= image_tag("29-view12.png") %>
 
-    Figure 13.7: New Relic JVMs View<br>
-    <%= image_tag("view13.png") %>
+    Figure 17.7: New Relic JVMs View<br>
+    <%= image_tag("30-view13.png") %>
 
 
 ## <a id='http-proxy'></a> Configuration with HTTP Proxy
