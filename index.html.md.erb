@@ -107,7 +107,7 @@ To download New Relic Service Broker for PCF tile and install it on PCF Ops Mana
 1. Log in to Ops Manager.
 
 1. Click **Import a Product** and import the New Relic Service Broker for PCF tile.
-
+    
     <%= image_tag("01-import-product.png") %>
 
 1. Click the "+" button to the right of "New Relic Service Broker" that you uploaded
@@ -137,13 +137,12 @@ To download New Relic Service Broker for PCF tile and install it on PCF Ops Mana
     * Enter description of the plan
     * Log in to your New Relic account and navigate to the **Account Settings** page from the drop-down menu in the upper right corner of the page. Copy the license key from your New Relic account and paste it here
 
-    <%= image_tag("09-nr-license-key.png") %>
-
+         <%= image_tag("09-nr-license-key.png") %>
     * If you are upgrading from New Relic Servie Broker 1.12.12 or older, make sure you follow the instructions in the upgrade section (**"Upgrading to the Latest Version"**) of this document to check "pre 1.12.12 plan" flag and enter the the pre 1.12.12 plan guid
     * If you are running New Relic Firehose Nozzle and would like to route the data for each application to a separate New Relic account (as opposed to New Relic's central Firehose Nozzle account) enter the target New Relic account and Insights Insert Key here
-    * If in previous steps you unchecked **"Global Access"**, you need to enter a comma-separaed list of orgs so that the system enables service access for them to allow users to create service instances of this plan
+    * If in previous steps you unchecked **"Global Access"**, you need to enter a comma-separated list of orgs so that the system enables service access for them to allow users to create service instances of this plan
 
-	  <%= image_tag("10-configure-plans-3.png") %>
+        <%= image_tag("10-configure-plans-3.png") %>
 
 1. Select the button on top the page to go to **"INSTALLATION DASHBOARD**"
 
@@ -154,7 +153,7 @@ To download New Relic Service Broker for PCF tile and install it on PCF Ops Mana
     * Select the blue button on the top right
     * To speed up the process you could uncheck **Select All Products** checkbox, and just select to apply change to **"New Relic Service Broker"** tile 
  
-    <%= image_tag("12-apply-changes-1.png") %>
+         <%= image_tag("12-apply-changes-1.png") %>
 
 1. On completion of the installation, check the Services Marketplace in Apps Manager. Select **"New Relic"** tile
 
@@ -175,22 +174,19 @@ To download New Relic Service Broker for PCF tile and install it on PCF Ops Mana
 1. Bind the New Relic Service to an app.
     * In Apps Manager go to an application
 
-    <%= image_tag("19-application.png") %>
-
+        <%= image_tag("19-application.png") %>
     * Select **"Service"** tab
-
     * Click the **"BIND SERVICE"** button and select the service instance you just created,
 
-    <%= image_tag("20-application-services.png") %>
-
+        <%= image_tag("20-application-services.png") %>
     * Click the **"BBIND"** button on the bottom right
 
-    <%= image_tag("21-application-services-bind-service-instance.png") %>
+        <%= image_tag("21-application-services-bind-service-instance.png") %>
 
 1. Restage the application
     * you can either select the link on top the "bind" page, or in a terminal window, run `cf restage` to make the changes
 
-    <%= image_tag("22-application-restage.png") %>
+        <%= image_tag("22-application-restage.png") %>
 
     <pre class='terminal'>
       $ cf restage APPNAME
