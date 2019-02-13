@@ -34,7 +34,6 @@ You can obtain a [60-day free trial license](http://newrelic.com/signup?funnel=p
 
 ## <a id='product-snapshot'></a> Product Snapshot
 
-<p class='note'><strong>Note:</strong> As of PCF v2.0, Elastic Runtime is renamed Pivotal Application Service (PAS).</p>
 
 The following table provides version and version-support information about New Relic Service Broker for PCF.
 
@@ -62,10 +61,20 @@ The following table provides version and version-support information about New R
         <td>v2.2.x, v2.3.x, and v2.4.x</td>
     </tr>
     <tr>
+        <td>BOSH stemcell version</td>
+        <td>Ubuntu Xenial</td>
+    </tr>
+    <tr>
         <td>IaaS support</td>
         <td>AWS, GCP, Azure, and vSphere</td>
     </tr>
 </table>
+
+<p class="note warning"><strong> WARNING:</strong>
+New Relic Service Broker for PCF v1.12.18
+and earlier require a Ubuntu Trusty stemcell.
+The end-of-life date for Ubuntu Trusty is April 2019.
+If a security vulnerability is found on this stemcell after April, it will not be fixed.</p>
 
 
 ## <a id='upgrading'></a> Upgrading to the Latest Version
