@@ -29,7 +29,8 @@ Selecting a plan binds your app with the New Relic agent, and the agent starts r
 
 ## <a id='trial'></a> Trial License
 
-You can obtain a [60-day free trial license](http://newrelic.com/signup?funnel=pivotal-cloud-foundry&partner=Pivotal+Cloud+Foundry&product_id=Standard&promo_code=PVCF60PRO).
+
+If you do not already have a New Relic account, you can obtain an account with a [free trial license](http://newrelic.com/signup?funnel=pivotal-cloud-foundry&partner=Pivotal+Cloud+Foundry).
 
 
 ## <a id='product-snapshot'></a> Product Snapshot
@@ -42,15 +43,15 @@ The following table provides version and version-support information about New R
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>v1.12.20</td>
+        <td>v1.12.23</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>January 22, 2019</td>
+        <td>March 8, 2019</td>
     </tr>
     <tr>
         <td>Software component version</td>
-        <td>New Relic Service Broker v1.12.20</td>
+        <td>New Relic Service Broker v1.12.23</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
@@ -79,15 +80,15 @@ If a security vulnerability is found on this stemcell after April, it will not b
 
 ## <a id='upgrading'></a> Upgrading to the Latest Version
 
-* New Relic Service Broker v1.12.18 and higher allows users to change New Relic license key in existing service plans. In v1.12.12 and earlier, the plan unique GUIDs were calculated differently. In order for the plan services to work properly and not break the compatibility, the GUIDs must be the same as before. The `"migration script"` preserves the plan GUIDs for existing plans in the plan collection for v1.12.12 and earlier. You can see 2 new properties labeled **"pre-1.12.12 plan?"** and **"Plan Guid Override (broker 1.12.12 or older)"** in the plan collection for each plan in the tile configuration. **Do not change** either of these properties, as they are set internally where required. For plans that were created with v1.12.12 or later, leave **"pre-1.12.12 plan"** unchecked, and **"Plan Guid Override"** blank.
+* New Relic Service Broker v1.12.18 and higher allows users to change New Relic license key in existing service plans. In v1.12.12 and earlier, the plan unique GUIDs were calculated differently. In order for the pre-1.12.12 plan services to work properly and not break the compatibility, the GUIDs must be the same as before. The `"migration script"` preserves the plan GUIDs for existing plans in the plan collection for v1.12.12 and earlier. You can see 2 new properties labeled **"pre-1.12.12 plan?"** and **"Plan Guid Override (broker 1.12.12 or older)"** in the plan collection for each plan in the tile configuration. **Do not change** either of these properties, as they are set internally where required. For plans that were created with version v1.12.13 or later, leave **"pre-1.12.12 plan"** unchecked, and **"Plan Guid Override"** blank.
 <p class='note'><strong>Note:</strong> The only case where you must override the "Plan Guid Override" property is when you have changed the original license key that was associated with the plan created by New Relic Service Broker v1.12.12 or earlier. You can obtain the original plan GUID from Cloud Controller by running the following command and entering the original GUID in the "Plan Guid Override" property:
 <pre class='term'>
   cf curl $(cf curl /v2/services?q=label:newrelic | grep "service_plans_url" | awk '{print $2}' | sed 's/[",]//g') | egrep "\"name\":|\"unique_id\":" | sed 's/[\",]//g' | tr -s " " | awk ' {name=$0; getline; printf("\t%-40s %-40s\n",name,$0)}'
 </pre></p>
 
-* The tile is supported on Ops Manager v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, v2.1.x, v2.2.x, and 2.3.x.
+* The tile is supported on Ops Manager v1.9.x, v1.10.x, v1.11.x, v1.12.x, v2.0.x, v2.1.x, v2.2.x, v2.3.x, and 2.4.x.
 
-* You can install the tile on any of these versions, and upgrade from v1.9.x to any Ops Manager version up to and including v2.3.x.
+* You can install the tile on any of these versions, and upgrade from v1.9.x to any Ops Manager version up to and including v2.4.x.
 
 * No upgrade paths are required for older versions of the tile, since versions older than v1.9.0 are not supported.
 
