@@ -5,7 +5,7 @@ owner: Partners
 
 This is documentation for the [New Relic Service Broker for Pivotal Cloud Foundry (PCF)](https://network.pivotal.io/products/p-new-relic) tile.
 
-New Relic APM supports real-time instrumentation and monitoring of application performance via its embedded agent that runs with apps. 
+New Relic APM supports real-time instrumentation and monitoring of application performance via its embedded agent that runs with apps.
 
 New Relic agent code publishes performance monitoring metrics and other details back to New Relic APM Dashboard.
 
@@ -14,9 +14,9 @@ The language agents also send all of the application and browser events to New R
 
 ## <a id='service-broker'></a> New Relic Service Broker
 
-A service broker allows Cloud Foundry apps to bind to services and consume the services easily from Pivotal Apps Manager or from the command line. 
+A service broker allows Cloud Foundry apps to bind to services and consume the services easily from Pivotal Apps Manager or from the command line.
 
-New Relic Service Broker for PCF enables you to use one or more New Relic accounts and is deployed as a Java app on PCF. 
+New Relic Service Broker for PCF enables you to use one or more New Relic accounts and is deployed as a Java app on PCF.
 
 The broker exposes the New Relic service on the Marketplace and allows users to directly create a service instance and bind it to their apps either from Apps Manager or from the command line.
 
@@ -71,28 +71,37 @@ The following table provides version and version-support information about New R
     </tr>
 </table>
 
-<p class="note warning"><strong> WARNING:</strong>	
-New Relic Service Broker for PCF v1.12.18	
-and earlier require a Ubuntu Trusty stemcell.	
-The end-of-life date for Ubuntu Trusty is April 2019.	
+<p class="note warning"><strong> WARNING:</strong>
+New Relic Service Broker for PCF v1.12.18
+and earlier require a Ubuntu Trusty stemcell.
+The end-of-life date for Ubuntu Trusty is April 2019.
 If a security vulnerability is found on this stemcell after April, it will not be fixed.</p>
 
 ## <a id='upgrading'></a> Upgrading to the Latest Version
 
-* New Relic Service Broker v1.12.18 and later allows users to change New Relic license key in existing service plans.
-  In v1.12.12 and earlier, the plan unique GUIDs were calculated differently.
-  For the pre-1.12.12 plan services to work properly and not break the compatibility, the GUIDs must be the same as before.
-  The `"migration script"` preserves the plan GUIDs for existing plans in the plan collection for v1.12.12 and earlier.
-  There are two new properties labeled **"pre-1.12.12 plan?"** and **"Plan Guid Override (broker 1.12.12 or older)"**
-  in the plan collection for each plan in the tile configuration.
-  **Do not change** either of these properties because they are set internally where required
-  For plans that were created with version v1.12.13 or later, leave **"pre-1.12.12 plan"** unchecked, and **"Plan Guid Override"** blank.
-<p class='note'><strong>Note:</strong> The only case where you must override the "Plan Guid Override" property is when you have changed the original license key that was associated with the plan created by New Relic Service Broker v1.12.12 or earlier. You can obtain the original plan GUID from Cloud Controller by running the following command and entering the original GUID in the "Plan Guid Override" property:
-<pre class='term'>
-  cf curl $(cf curl /v2/services?q=label:newrelic | grep "service_plans_url" | awk '{print $2}' | sed 's/[",]//g') | egrep "\"name\":|\"unique_id\":" | sed 's/[\",]//g' | tr -s " " | awk ' {name=$0; getline; printf("\t%-40s %-40s\n",name,$0)}'
-</pre></p>
+* New Relic Service Broker v1.12.18 and later allows users to change the New Relic license key in existing service plans.
 
-* The tile is supported on Ops Manager v2.1.x, v2.2.x, v2.3.x, and 2.4.x.
+* In New Relic Service Broker v1.12.12 and earlier, the unique GUIDs for plans were calculated differently.
+  For these plans to not break compatibility, the GUIDs must be the same as before.
+  The `migration script` preserves the plan GUIDs for existing plans in the plan collection for v1.12.12 and earlier. <br><br>
+    There are two new properties labeled **pre-1.12.12 plan?** and **Plan Guid Override (broker 1.12.12 or older)**
+    in the plan collection for each plan in the tile configuration. Do not change either of these
+    properties because they are set internally where required.
+    <div class='note'><strong>Note:</strong> The only case where you must override the
+      <strong>Plan Guid Override</strong> is when you have changed the original license key that was associated
+      with the plan created by New Relic Service Broker v1.12.12 or earlier.
+      You can obtain the original plan GUID from Cloud Controller by running the following command and
+      entering the original GUID in the <strong>Plan Guid Override</strong> property:
+    <pre class='term'>
+      cf curl $(cf curl /v2/services?q=label:newrelic | grep "service_plans_url" | \
+      awk '{print $2}' | sed 's/[",]//g') | egrep "\"name\":|\"unique_id\":" | \
+      sed 's/[\",]//g' | tr -s " " | awk ' {name=$0; getline; printf("\t%-40s %-40s\n",name,$0)}'
+    </pre></div>
+
+* In New Relic Service Broker v1.12.13 and later, leave **pre-1.12.12 plan** unchecked,
+    and **Plan Guid Override** blank.
+
+* The tile is supported on Ops Manager v2.1.x, v2.2.x, v2.3.x, and v2.4.x.
 
 * You can install the tile on any of these versions, and upgrade from v1.9.x to any Ops Manager version up to and including v2.4.x.
 
@@ -123,7 +132,7 @@ To download New Relic Service Broker for PCF tile and install it on PCF Ops Mana
 1. Log in to Ops Manager.
 
 1. Click **Import a Product** and import the New Relic Service Broker for PCF tile.
-    
+
     <%= image_tag("01-import-product.png") %>
 
 1. Click the "+" button to the right of "New Relic Service Broker" that you uploaded
@@ -167,8 +176,8 @@ To download New Relic Service Broker for PCF tile and install it on PCF Ops Mana
 
 1. Apply your changes.
     * Select the blue button on the top right
-    * To speed up the process you could uncheck **Select All Products** checkbox, and just select to apply change to **"New Relic Service Broker"** tile 
- 
+    * To speed up the process you could uncheck **Select All Products** checkbox, and just select to apply change to **"New Relic Service Broker"** tile
+
          <%= image_tag("12-apply-changes-1.png") %>
 
 1. On completion of the installation, check the Services Marketplace in Apps Manager. Select **"New Relic"** tile
@@ -234,8 +243,8 @@ To download New Relic Service Broker for PCF tile and install it on PCF Ops Mana
 
 ## <a id='http-proxy'></a> Configuration with HTTP Proxy
 
-If the PCF environment needs to use an HTTP or HTTPS proxy for external outbound communication, the service broker itself does not need to know anything about the HTTP proxy, as it relays the license keys to the consumer apps. 
-The consumer app should specify the `http\_proxy or https\_proxy` as an environment variable for the agent to communicate externally with non-Java apps, and use `JAVA_OPTS` for Java apps. 
+If the PCF environment needs to use an HTTP or HTTPS proxy for external outbound communication, the service broker itself does not need to know anything about the HTTP proxy, as it relays the license keys to the consumer apps.
+The consumer app should specify the `http\_proxy or https\_proxy` as an environment variable for the agent to communicate externally with non-Java apps, and use `JAVA_OPTS` for Java apps.
 In addition, the New Relic Agent should also be configured with its own set of parameters (`-Dnewrelic.config.\*`) to communicate with its controller through the proxy for Java language apps.
 
 To specify using `http_proxy` for the New Relic non-Java app agent to talk to its controller using the proxy, run the following commands:
@@ -277,8 +286,8 @@ Whenever making changes to Cloud Foundry environment variables, you must restage
   $ cf restage APPNAME
 </pre>
 
-These environment variables can either be set individually per app, or with environment variable groups to be set 
-for all apps as part of staging, running environments, etcetera using the Cloud Foundry Command Line Interface (cf CLI) tool. 
+These environment variables can either be set individually per app, or with environment variable groups to be set
+for all apps as part of staging, running environments, etcetera using the Cloud Foundry Command Line Interface (cf CLI) tool.
 
 **Environment Variable Groups**
 
