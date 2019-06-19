@@ -43,27 +43,27 @@ The following table provides version and version-support information about New R
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>1.12.23</td>
+        <td>1.12.24</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>March 8, 2019</td>
+        <td>June 19, 2019</td>
     </tr>
     <tr>
         <td>Software component version</td>
-        <td>New Relic Service Broker 1.12.23</td>
+        <td>New Relic Service Broker 1.12.24</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
-        <td>2.1, 2.2, 2.3, and 2.4</td>
+        <td>2.3, 2.4, 2.5, and 2.6</td>
     </tr>
     <tr>
         <td>Compatible Pivotal Application Service version(s)</td>
-        <td>2.1, 2.2, 2.3, and 2.4</td>
+        <td>2.3, 2.4, 2.5, and 2.6</td>
     </tr>
     <tr>
         <td>BOSH stemcell version</td>
-        <td>Ubuntu Xenial</td>
+        <td>Ubuntu Xenial (315)</td>
     </tr>
     <tr>
         <td>IaaS support</td>
@@ -101,9 +101,9 @@ If a security vulnerability is found on this stemcell after April, it will not b
 * In New Relic Service Broker v1.12.13 and later, leave **pre-1.12.12 plan** unchecked,
     and **Plan Guid Override** blank.
 
-* The tile is supported on Ops Manager v2.1.x, v2.2.x, v2.3.x, and v2.4.x.
+* The tile is supported on Ops Manager v2.3.x, v2.4.x, v2.5.x, and v2.6.x.
 
-* You can install the tile on any of these versions, and upgrade from v1.9.x to any Ops Manager version up to and including v2.4.x.
+* You can install the tile on any of these versions, and upgrade from v1.9.x to any Ops Manager version up to and including v2.6.x.
 
 * No upgrade paths are required for older versions of the tile, since versions older than v1.9.0 are not supported.
 
@@ -315,7 +315,7 @@ For more information, see [Configuration settings precedence](https://docs.newre
 
 ## <a id='offline-dependencies'></a> Packaging Dependencies for Offline Buildpacks
 
-If you are running PCF in an offline manner, you should recreate and package the dependencies, including the New Relic agent binaries, using offline buildpacks in your PCF environment.
+If you are running PCF in an offline (disconnected) environment, you should recreate and package the dependencies, including the New Relic agent binaries, using offline buildpacks in your PCF environment.
 
 For more information, see [Packaging Dependencies for Offline Buildpacks](https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html).
 
@@ -326,7 +326,7 @@ For more information, see [Packaging Dependencies for Offline Buildpacks](https:
     * Java Buildpack v2.7+ and v3.x
     * Node.js Buildpack v1.5.19+
     * PHP Buildpack v4.0+
-    * .NET Core requires that you push your app using `cf v3-push` and specify New Relic's supply buildpack with `-b` option in the command line as the first buildpack in sequence.
+    * .NET Core and Framework: please install [New Relic Dotnet Extension Buildpack](https://network.pivotal.io/products/new-relic-dotnet-buildpack/) tile
 
 
 ## <a id='feedback'></a> Feedback
