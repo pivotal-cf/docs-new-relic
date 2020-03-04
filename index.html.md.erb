@@ -1,9 +1,9 @@
 ---
-title: New Relic Service Broker for Pivotal Platform
+title: New Relic Service Broker for VMware Tanzu
 owner: Partners
 ---
 
-This is documentation for the [New Relic Service Broker for Pivotal Platform](https://network.pivotal.io/products/p-new-relic) tile.
+This is documentation for the [New Relic Service Broker for VMware Tanzu](https://network.pivotal.io/products/p-new-relic) tile.
 
 New Relic APM supports real-time instrumentation and monitoring of application performance via its embedded agent that runs with apps.
 
@@ -16,15 +16,15 @@ The language agents also send all of the application and browser events to New R
 
 A service broker allows Cloud Foundry apps to bind to services and consume the services easily from Pivotal Apps Manager or from the command line.
 
-New Relic Service Broker for Pivotal Platform enables you to use one or more New Relic accounts and is deployed as a Java app on Pivotal Platform.
+New Relic Service Broker for VMware Tanzu enables you to use one or more New Relic accounts and is deployed as a Java app on VMware Tanzu.
 
 The broker exposes the New Relic service on the Marketplace and allows users to directly create a service instance and bind it to their apps either from Apps Manager or from the command line.
 
-The New Relic Service Broker for Pivotal Platform tile installs the New Relic Service Broker as an app, registers it as a service broker on Pivotal Platform, and exposes its service plans on the Marketplace. Each service plan is associated with an existing New Relic account, which is configured during the tile setup.
+The New Relic Service Broker for VMware Tanzu tile installs the New Relic Service Broker as an app, registers it as a service broker on VMware Tanzu, and exposes its service plans on the Marketplace. Each service plan is associated with an existing New Relic account, which is configured during the tile setup.
 
-Selecting a plan binds your app with the New Relic agent, and the agent starts reporting to the New Relic account which is associated with the selected plan. This makes the installation and subsequent use of New Relic on your Pivotal Platform apps easier and more straightforward.
+Selecting a plan binds your app with the New Relic agent, and the agent starts reporting to the New Relic account which is associated with the selected plan. This makes the installation and subsequent use of New Relic on your VMware Tanzu apps easier and more straightforward.
 
-<p class="note warning"><strong>WARNING:</strong> The current tile removes the <code>all_open</code> security group from the tile default security settings. If you are using a previous versions of the tile, make your Pivotal Platform environment more secure by removing the <code>all_open</code> security group from the Application Security Group (ASG) settings. The new version of the tile does not open the security, nor does it close the security if it was already open.</p>
+<p class="note warning"><strong>WARNING:</strong> The current tile removes the <code>all_open</code> security group from the tile default security settings. If you are using a previous versions of the tile, make your VMware Tanzu environment more secure by removing the <code>all_open</code> security group from the Application Security Group (ASG) settings. The new version of the tile does not open the security, nor does it close the security if it was already open.</p>
 
 
 ## <a id='trial'></a> Trial License
@@ -36,7 +36,7 @@ If you do not already have a New Relic account, you can obtain an account with a
 ## <a id='product-snapshot'></a> Product Snapshot
 
 
-The following table provides version and version-support information about New Relic Service Broker for Pivotal Platform.
+The following table provides version and version-support information about New Relic Service Broker for VMware Tanzu.
 
 <table class="nice">
     <th>Element</th>
@@ -58,7 +58,7 @@ The following table provides version and version-support information about New R
         <td> 2.4, 2.5, 2.6, and 2.7</td>
     </tr>
     <tr>
-        <td>Compatible Pivotal Application Service version(s)</td>
+        <td>Compatible VMware Tanzu Application Service for VMs version(s)</td>
         <td>2.4, 2.5, 2.5, 2.6, and 2.7</td>
     </tr>
     <tr>
@@ -108,7 +108,7 @@ The following table provides version and version-support information about New R
 
 ## <a id='installing'></a> Installing Through Ops Manager
 
-To download New Relic Service Broker for Pivotal Platform tile and install it on Pivotal Platform Ops Manager, do the following:
+To download New Relic Service Broker for VMware Tanzu tile and install it on VMware Tanzu Ops Manager, do the following:
 <br/><br/>
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/).
 
@@ -125,7 +125,7 @@ To download New Relic Service Broker for Pivotal Platform tile and install it on
 
 1. Log in to Ops Manager.
 
-1. Click **Import a Product** and import the New Relic Service Broker for Pivotal Platform tile.
+1. Click **Import a Product** and import the New Relic Service Broker for VMware Tanzu tile.
 
     <%= image_tag("01-import-product.png") %>
 
@@ -237,7 +237,7 @@ To download New Relic Service Broker for Pivotal Platform tile and install it on
 
 ## <a id='http-proxy'></a> Configuration with HTTP Proxy
 
-If the Pivotal Platform environment needs to use an HTTP or HTTPS proxy for external outbound communication, the service broker itself does not need to know anything about the HTTP proxy, as it relays the license keys to the consumer apps.
+If the VMware Tanzu environment needs to use an HTTP or HTTPS proxy for external outbound communication, the service broker itself does not need to know anything about the HTTP proxy, as it relays the license keys to the consumer apps.
 The consumer app should specify the `http\_proxy or https\_proxy` as an environment variable for the agent to communicate externally with non-Java apps, and use `JAVA_OPTS` for Java apps.
 In addition, the New Relic Agent should also be configured with its own set of parameters (`-Dnewrelic.config.\*`) to communicate with its controller through the proxy for Java language apps.
 
@@ -309,7 +309,7 @@ For more information, see [Configuration settings precedence](https://docs.newre
 
 ## <a id='offline-dependencies'></a> Packaging Dependencies for Offline Buildpacks
 
-If you are running Pivotal Platform in an offline (disconnected) environment, you should recreate and package the dependencies, including the New Relic agent binaries, using offline buildpacks in your Pivotal Platform environment.
+If you are running VMware Tanzu in an offline (disconnected) environment, you should recreate and package the dependencies, including the New Relic agent binaries, using offline buildpacks in your VMware Tanzu environment.
 
 For more information, see [Packaging Dependencies for Offline Buildpacks](https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html).
 
@@ -325,4 +325,4 @@ For more information, see [Packaging Dependencies for Offline Buildpacks](https:
 
 ## <a id='feedback'></a> Feedback
 
-Please provide any bugs, feature requests, or questions to the Pivotal Platform feedback list.
+Please provide any bugs, feature requests, or questions to the VMware Tanzu feedback list.
