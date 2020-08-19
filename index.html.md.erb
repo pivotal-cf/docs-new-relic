@@ -43,23 +43,23 @@ The following table provides version and version-support information about New R
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>1.12.26</td>
+        <td>1.12.27</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>May 13, 2020</td>
+        <td>August 19, 2020</td>
     </tr>
     <tr>
         <td>Software component version</td>
-        <td>New Relic Service Broker 1.12.26</td>
+        <td>New Relic Service Broker 1.12.27</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
-        <td>2.7.x, 2.8.x, and 2.9.x</td>
+        <td>2.7.x, 2.8.x, 2.9.x, and 2.10.x</td>
     </tr>
     <tr>
         <td>Compatible VMware Tanzu Application Service for VMs version(s)</td>
-        <td>2.7.x, 2.8.x, and 2.9.x</td>
+        <td>2.7.x, 2.8.x, 2.9.x, and 2.10.x</td>
     </tr>
     <tr>
         <td>BOSH stemcell version</td>
@@ -312,15 +312,6 @@ For more information, see [Configuration settings precedence](https://docs.newre
 If you are running VMware Tanzu in an offline (disconnected) environment, you should recreate and package the dependencies, including the New Relic agent binaries, using offline buildpacks in your VMware Tanzu environment.
 
 For more information, see [Packaging Dependencies for Offline Buildpacks](https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html).
-
-
-## <a id='limitations'></a> Limitations
-
-* Currently supported buildpacks bundling New Relic Agent are the Java, node.js, PHP, and .NET Core buildpacks.
-    * Java Buildpack v2.7+ and v3.x
-    * Node.js Buildpack v1.5.19+
-    * PHP Buildpack v4.0+
-    * .NET Core and Framework: please install [New Relic Dotnet Extension Buildpack](https://network.pivotal.io/products/new-relic-dotnet-buildpack/) tile
 
 
 ## <a id='feedback'></a> Feedback
