@@ -43,23 +43,23 @@ The following table provides version and version-support information about New R
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>1.12.29</td>
+        <td>1.12.31</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>November 11, 2021</td>
+        <td>April 11, 2022</td>
     </tr>
     <tr>
         <td>Software component version</td>
-        <td>New Relic Service Broker 1.12.29</td>
+        <td>New Relic Service Broker 1.12.31</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
-        <td>2.9.x, 2.10.x, 2.11.x, and 2.12.x</td>
+        <td>2.8x, 2.9.x, 2.10.x</td>
     </tr>
     <tr>
         <td>Compatible VMware Tanzu Application Service for VMs version(s)</td>
-        <td>2.9.x, 2.10.x, 2.11.x, and 2.12.x</td>
+        <td>2.10.x, 2.11.x, 2.12.x, and 2.13.x</td>
     </tr>
     <tr>
         <td>BOSH stemcell version</td>
@@ -244,9 +244,9 @@ In addition, the New Relic Agent should also be configured with its own set of p
 To specify using `http_proxy` for the New Relic non-Java app agent to talk to its controller using the proxy, run the following commands:
 
 <pre class='terminal'>
-  $ cf set-env APPNAME http_proxy ‘http://user:password@proxy-server.customer.example.com:8080'
+  $ cf set-env APPNAME http_proxy 'http://user:password@proxy-server.customer.example.com:8080'
 
-  $ cf set-env APPNAME https_proxy ‘http://user:password@proxy-server.customer.example.com:8080'
+  $ cf set-env APPNAME https_proxy 'http://user:password@proxy-server.customer.example.com:8080'
 </pre>
 
 To specify using `JAVA_OPTS` for the New Relic Java agent to talk to its controller using the proxy, run the following command:
@@ -254,7 +254,7 @@ To specify using `JAVA_OPTS` for the New Relic Java agent to talk to its control
 <pre class='terminal'>
   $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar
   -Dnewrelic.config.proxy_host=proxy.customer.example.com
-  -Dnewrelic.config.proxy_port=8080 “
+  -Dnewrelic.config.proxy_port=8080
 </pre>
 
 If a Java app also needs to talk through a proxy, add the Java proxy settings in addition to the New Relic agent proxy settings with the following command:
@@ -264,7 +264,7 @@ If a Java app also needs to talk through a proxy, add the Java proxy settings in
   -Dnewrelic.config.proxy_host=proxy.customer.example.com
   -Dnewrelic.config.proxy_port=8080
   -Dhttp.proxyHost=proxy.customer.example.com-Dhttp.proxyPort=8080
-  -Dhttps.proxyHost=proxy.customer.example.com -Dhttps.proxyPort=8080  “
+  -Dhttps.proxyHost=proxy.customer.example.com -Dhttps.proxyPort=8080
 </pre>
 
 For a non-Java app that needs to talk outbound using a proxy, run the following commands:
