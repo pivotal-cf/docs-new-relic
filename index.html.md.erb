@@ -5,9 +5,9 @@ owner: Partners
 
 This is documentation for the [New Relic Service Broker for VMware Tanzu](https://network.pivotal.io/products/p-new-relic) tile.
 
-New Relic APM supports real-time instrumentation and monitoring of application performance via its embedded agent that runs with apps.
-
-New Relic agent code publishes performance monitoring metrics and other details back to New Relic APM Dashboard.
+New Relic APM:
+* supports real-time instrumentation and monitoring of application performance via its embedded agent that runs with apps.
+* publishes performance monitoring metrics and other details back to New Relic APM Dashboard.
 
 The language agents also send all of the application and browser events to New Relic Analytics tool, Insights, for visualization and dashboarding.
 
@@ -29,12 +29,10 @@ Selecting a plan binds your app with the New Relic agent, and the agent starts r
 
 ## <a id='trial'></a> Trial License
 
-
 If you do not already have a New Relic account, you can obtain an account with a [free trial license](http://newrelic.com/signup).
 
 
 ## <a id='product-snapshot'></a> Product Snapshot
-
 
 The following table provides version and version-support information about New Relic Service Broker for VMware Tanzu.
 
@@ -109,7 +107,7 @@ The following table provides version and version-support information about New R
 ## <a id='installing'></a> Installing Through Ops Manager
 
 To download New Relic Service Broker for VMware Tanzu tile and install it on VMware Tanzu Ops Manager, do the following:
-<br/><br/>
+
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/).
 
 1. Import the product file to your Ops Manager installation.
@@ -127,112 +125,113 @@ To download New Relic Service Broker for VMware Tanzu tile and install it on VMw
 
 1. Click **Import a Product** and import the New Relic Service Broker for VMware Tanzu tile.
 
-    <%= image_tag("01-import-product.png") %>
+    ![alt-text=""](./images/01-import-product.png)
 
-1. Click the "+" button to the right of "New Relic Service Broker" that you uploaded
+2. Click the "+" button to the right of "New Relic Service Broker" that you uploaded.
 
-    <%= image_tag("02-imported-product.png") %>
+    ![alt-text=""](./images/02-imported-product.png)
 
-1. Select the New Relic tile.
+3. Select the New Relic tile.
 
-    <%= image_tag("03-configure-1.png") %>
+    ![alt-text=""](./images/03-configure-1.png)
 
-1. Configure Availability Zone and Network.
+4. Configure Availability Zone and Network.
 
-    <%= image_tag("05-configure-3-network.png") %>
+    ![alt-text=""](./images/05-configure-3-network.png)
 
-1. Configure Service Broker Global Access.
-    * You can either keep the global access enabled for all service plans (default), or you can disable global access, and later in the configuration enable access for one or more **"orgs"** for each **"service plan"** that you add.
+5. Configure Service Broker Global Access.
+    * You can either keep the global access enabled for all service plans (default), or you can disable global access, and later in the configuration enable access for one or more **orgs** for each **service plan** that you add.
 
-    <%= image_tag("06-configure-4-global-access.png") %>
+    ![alt-text=""](./images/06-configure-4-global-access.png)
 
-1. Configure the New Relic Service Broker.
+6. Configure the New Relic Service Broker.
     * Click **Add** on the far right of the Service Plan screen to create a new service plan.
 
-    <%= image_tag("08-configure-plans-1.png") %>
+    ![alt-text=""](./images/08-configure-plans-1.png)
 
-1. Create a service plan with your New Relic license key.
-    * Enter a name for the service plan (no spaces)
-    * Enter description of the plan
-    * Log in to your New Relic account and navigate to the **Account Settings** page from the drop-down menu in the upper right corner of the page. Copy the license key from your New Relic account and paste it here
+7. Create a service plan with your New Relic license key.
+    * Enter a name for the service plan (no spaces).
+    * Enter description of the plan.
+    * Log in to your New Relic account and navigate to the **Account Settings** page from the drop-down menu in the upper right corner of the page. Copy the license key from your New Relic account and paste it here.
 
-         <%= image_tag("09-nr-license-key.png") %>
-    * If you are upgrading from New Relic Service Broker 1.12.12 or older, make sure you follow the instructions in the upgrade section (**"Upgrading to the Latest Version"**) of this document to check "pre 1.12.12 plan" flag and enter the pre 1.12.12 plan GUID
-    * If you are running New Relic Firehose Nozzle and would like to route the data for each application to a separate New Relic account (as opposed to New Relic's central Firehose Nozzle account) enter the target New Relic account and Insights Insert Key here
-    * If in previous steps you unchecked **"Global Access"**, you need to enter a comma-separated list of orgs so that the system enables service access for them to allow users to create service instances of this plan
+         ![alt-text=""](./images/09-nr-license-key.png)
 
-        <%= image_tag("10-configure-plans-3.png") %>
+    * If you are upgrading from New Relic Service Broker 1.12.12 or older, make sure you follow the instructions in the upgrade section (**Upgrading to the Latest Version**) of this document to check "pre 1.12.12 plan" flag and enter the pre 1.12.12 plan GUID.
+    * If you are running New Relic Firehose Nozzle and would like to route the data for each application to a separate New Relic account (as opposed to New Relic's central Firehose Nozzle account) enter the target New Relic account and Insights Insert Key here.
+    * If in previous steps you unchecked **Global Access**, you need to enter a comma-separated list of orgs so that the system enables service access for them to allow users to create service instances of this plan.
 
-1. Select the button on top the page to go to **"INSTALLATION DASHBOARD**"
+        ![alt-text=""](./images/10-configure-plans-3.png)
 
-    <%= image_tag("11-installation-dashboard.png") %>
+8. Select the button on top the page to go to **INSTALLATION DASHBOARD**
 
+    ![alt-text=""](./images/11-installation-dashboard.png)
 
-1. Apply your changes.
-    * Select the blue button on the top right
-    * To speed up the process you could uncheck **Select All Products** checkbox, and just select to apply change to **"New Relic Service Broker"** tile
+9. Apply your changes.
+    * Click the blue button on the top right.
+    * To speed up the process you could uncheck **Select All Products** checkbox, and select to apply change to **New Relic Service Broker** tile.
 
-         <%= image_tag("12-apply-changes-1.png") %>
+         ![alt-text=""](./images/12-apply-changes-1.png)
 
-1. On completion of the installation, check the Services Marketplace in Apps Manager. Select **"New Relic"** tile
+10. On completion of the installation, check the Services Marketplace in Apps Manager. Select **New Relic** tile.
 
-    <%= image_tag("15-marketplace.png") %>
+    ![alt-text=""](./images/15-marketplace.png)
 
-1. View New Relic Service Plans, and select the desired plan
+11. View New Relic Service Plans, and select the desired plan.
 
-    <%= image_tag("16-marketplace-broker-select-plan.png") %>
+    ![alt-text=""](./images/16-marketplace-broker-select-plan.png)
 
-1. Enter the service instance name and click on **"CREATE"** button to create the service instance
+12. Enter the service instance name and click on **"CREATE"** button to create the service instance.
 
-    <%= image_tag("17-marketplace-broker-service-instance-name.png") %>
+    ![alt-text=""](./images/17-marketplace-broker-service-instance-name.png)
 
-1. Service Plan created
+13. Service Plan created.
 
-    <%= image_tag("18-marketplace-serevice-created.png") %>
+    ![alt-text=""](./images/18-marketplace-serevice-created.png)
 
-1. Bind the New Relic Service to an app.
-    * In Apps Manager go to an application
+14. Bind the New Relic Service to an app.
+    * In Apps Manager go to an application.
 
-        <%= image_tag("19-application.png") %>
-    * Select **"Service"** tab
-    * Click the **"BIND SERVICE"** button and select the service instance you just created,
+        ![alt-text=""](./images/19-application.png)
 
-        <%= image_tag("20-application-services.png") %>
-    * Click the **"BBIND"** button on the bottom right
+    * Select **Service** tab.
+    * Click the **BIND SERVICE** button and select the service instance you just created.
 
-        <%= image_tag("21-application-services-bind-service-instance.png") %>
+        ![alt-text=""](./images/20-application-services.png)
 
-1. Restage the application
-    * you can either select the link on top the "bind" page, or in a terminal window, run `cf restage` to make the changes
+    * Click the **BIND** button on the bottom right.
 
-        <%= image_tag("22-application-restage.png") %>
+        ![alt-text=""](./images/21-application-services-bind-service-instance.png)
 
-    <pre class='terminal'>
+15. Restage the application. You can select the link on top the **Bind** page, or in a terminal window, and run `cf restage` to make the changes.
+
+    ![alt-text=""](./images/22-application-restage.png)
+
+    ```
       $ cf restage APPNAME
-    </pre>
+    ```
 
-1. Log in to New Relic to view monitoring data.
+16. Log in to New Relic to view monitoring data.<br>
 
     Figure 17.1: New Relic App Monitoring Dashboard<br>
-    <%= image_tag("24-nr-overview.png") %>
+    ![alt-text=""](./images/24-nr-overview.png)
 
     Figure 17.2: New Relic Transactions View<br>
-    <%= image_tag("25-nr-transactions-view.png") %>
+    ![alt-text=""](./images/25-nr-transactions-view.png)
 
     Figure 17.3: Transaction Traces View<br>
-    <%= image_tag("26-nr-transaction-trace.png") %>
+    ![alt-text=""](./images/26-nr-transaction-trace.png)
 
     Figure 17.4: New Relic Database View<br>
-    <%= image_tag("27-nr-database-view.png") %>
+    ![alt-text=""](./images/27-nr-database-view.png)
 
     Figure 17.5: New Relic Web Transactions View<br>
-    <%= image_tag("28-view11.png") %>
+    ![alt-text=""](./images/28-view11.png)
 
     Figure 17.6: New Relic Top Web Transactions View<br>
-    <%= image_tag("29-view12.png") %>
+    ![alt-text=""](./images/29-view12.png)
 
     Figure 17.7: New Relic JVMs View<br>
-    <%= image_tag("30-view13.png") %>
+    ![alt-text=""](./images/30-view13.png)
 
 
 ## <a id='http-proxy'></a> Configuration with HTTP Proxy
@@ -243,42 +242,42 @@ In addition, the New Relic Agent should also be configured with its own set of p
 
 To specify using `http_proxy` for the New Relic non-Java app agent to talk to its controller using the proxy, run the following commands:
 
-<pre class='terminal'>
+```
   $ cf set-env APPNAME http_proxy 'http://user:password@proxy-server.customer.example.com:8080'
 
   $ cf set-env APPNAME https_proxy 'http://user:password@proxy-server.customer.example.com:8080'
-</pre>
+```
 
 To specify using `JAVA_OPTS` for the New Relic Java agent to talk to its controller using the proxy, run the following command:
 
-<pre class='terminal'>
+```
   $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar
   -Dnewrelic.config.proxy_host=proxy.customer.example.com
   -Dnewrelic.config.proxy_port=8080
-</pre>
+```
 
 If a Java app also needs to talk through a proxy, add the Java proxy settings in addition to the New Relic agent proxy settings with the following command:
 
-<pre class='terminal'>
+```
   $ cf set-env APPNAME JAVA_OPTS " -Dtest.value=barbar
   -Dnewrelic.config.proxy_host=proxy.customer.example.com
   -Dnewrelic.config.proxy_port=8080
   -Dhttp.proxyHost=proxy.customer.example.com-Dhttp.proxyPort=8080
   -Dhttps.proxyHost=proxy.customer.example.com -Dhttps.proxyPort=8080
-</pre>
+```
 
 For a non-Java app that needs to talk outbound using a proxy, run the following commands:
 
-<pre class='terminal'>
+```
   $ cf set-env APPNAME http_proxy http://user@password:myproxy....:8080/
   $ cf set-env APPNAME https_proxy https://user@password:myproxy....:8080/
-</pre>
+```
 
 Whenever making changes to Cloud Foundry environment variables, you must restage your app(s) to make the changes effective.
 
-<pre class='terminal'>
+```
   $ cf restage APPNAME
-</pre>
+```
 
 These environment variables can either be set individually per app, or with environment variable groups to be set
 for all apps as part of staging, running environments, etcetera using the Cloud Foundry Command Line Interface (cf CLI) tool.
@@ -294,7 +293,7 @@ Use the `JAVA\_OPTS` environment variable to specify New Relic Agent-specific en
 
 For example:
 
-<pre class='terminal'>
+```
   $ cf ssevg '{ "JAVA_OPTS" : " -Dtest.value=barbar
   -Dnewrelic.config.proxy_host=proxy.customer.example.com
   -Dnewrelic.config.proxy_port=8080 -Dhttp.proxyHost=proxy.customer.example.com
@@ -302,7 +301,7 @@ For example:
   -Dhttps.proxyPort=8080 -Dspring.profiles.active=dev
   -Dnewrelic.config.log_level=finer
   -Djavax.net.debug=all ", "test_env_profile" : "Staging" }'
-</pre>
+```
 
 For more information, see [Configuration settings precedence](https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file#config-options-precedence).
 
